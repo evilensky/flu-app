@@ -39,12 +39,13 @@ end
 # gem 'unicorn'
 
 # Use Capistrano for deployment
-# gem 'capistrano', group: :development
+gem 'capistrano', group: :development
+gem 'rvm-capistrano'
 
 # Use debugger
 gem 'debugger', group: [:development, :test]
 
 gem 'devise'
 gem 'simple_form', git: 'https://github.com/plataformatec/simple_form.git'
-gem 'compass-rails'
+gem 'compass-rails', github: 'milgner/compass-rails', branch: 'rails4'
 gem 'zurb-foundation'
