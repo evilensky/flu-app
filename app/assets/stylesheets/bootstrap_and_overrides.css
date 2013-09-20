@@ -5,6 +5,10 @@
   To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
   =require twitter-bootstrap-static/fontawesome
   */
+body > div.container {
+  padding-top: 40px;
+}
+
 .radio input[type="radio"],
 .checkbox input[type="checkbox"] {
   margin-left: -7px;
@@ -17,4 +21,5 @@ form > div.question {
 
 .btn-group-vertical > .btn+.btn {
   margin-top: 5px;
+  white-space: normal;
 }
