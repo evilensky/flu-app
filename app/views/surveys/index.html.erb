@@ -1,0 +1,5 @@
+<% @surveys.each do |survey| %>
+  <%= link_to(survey) do %>
+    <h3><%= survey.title %></h3>
+  <% end %>
+<% end %>

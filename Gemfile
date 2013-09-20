@@ -29,7 +29,7 @@ gem 'jbuilder', '~> 1.2'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'sdoc', require: false
+  #gem 'sdoc', require: false
 end
 
 # Use ActiveModel has_secure_password
@@ -42,4 +42,9 @@ end
 # gem 'capistrano', group: :development
 
 # Use debugger
-# gem 'debugger', group: [:development, :test]
+gem 'debugger', group: [:development, :test]
+
+gem 'devise'
+gem 'simple_form', git: 'https://github.com/plataformatec/simple_form.git'
+gem 'compass-rails'
+gem 'zurb-foundation'
