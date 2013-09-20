@@ -18,3 +18,4 @@
 # Ignore deployment files.
 Capfile
 config/deploy.rb
+config/database.yml
