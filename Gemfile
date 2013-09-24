@@ -46,7 +46,6 @@ gem 'rvm-capistrano'
 gem 'debugger', group: [:development, :test]
 
 gem 'devise'
+gem 'cancan'
 gem 'simple_form', git: 'https://github.com/plataformatec/simple_form.git'
-#gem 'compass-rails', github: 'milgner/compass-rails', branch: 'rails4'
-#gem 'zurb-foundation'
 gem 'twitter-bootstrap-rails'
