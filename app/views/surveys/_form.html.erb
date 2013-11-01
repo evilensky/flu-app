@@ -1,15 +1,61 @@
-<%= simple_form_for @survey do |f| %>
-  <% @survey.questions.order(:data_label).each do |q| %>
-    <%= f.simple_fields_for :questions, q do |q_fields| %>
-      <% if q.input_type == 'string' %>
-        <%= q_fields.input :response_data, label: q.content, input_html: { style: 'width: 25%;' } %>
-      <% else %>
-        <div class="question">
-          <%= q_fields.association :responses, collection: q.responses, as: q.input_type, label: q.content, label_method: :label, item_wrapper_class: 'btn btn-large', input_html: { checked: false }, wrapper_html: { :class => 'btn-group btn-group-vertical' } %>
-        </div>
+<%= form_for(@survey, html: { class: 'form-horizontal label-left' }) do |f| %>
+  <fieldset>
+    <% @survey.questions.order(:data_label).each do |q| %>
+      <%= f.fields_for :questions, q do |q_fields| %>
+        <% case q.input_type %>
+        <% when 'string' %>
+          <div class="control-group">
+            <label class="control-label"><%= q.content %></label>
+            <div class="controls form-group">
+              <%= q_fields.text_field :response_data, class: 'col-sm-6 col-xs-12' %>
+            </div>
+          </div>
+        <% when 'date' %>
+          <div class="control-group">
+            <label class="control-label"><%= q.content %></label>
+            <div class="controls form-group">
+              <%= q_fields.text_field :response_data, class: 'col-sm-6 col-xs-12 datepicker' %>
+            </div>
+          </div>
+        <% when 'integer' %>
+          <div class="control-group">
+            <label class="control-label"><%= q.content %></label>
+            <div class="controls form-group">
+              <%= q_fields.number_field :response_data, class: 'col-sm-6 col-xs-12' %>
+            </div>
+          </div>
+        <% when 'check_boxes' %>
+          <div class="control-group">
+            <label class="control-label"><%= q.content %></label>
+            <div class="controls form-group">
+              <div class="btn-group btn-group-vertical col-sm-12" data-toggle="buttons-checkbox">
+              <% q.responses.each do |response| %>
+                <label class="btn btn-transparent" data-toggle-class="btn-default" data-toggle-passive-class="btn-inverse">
+                  <%= q_fields.check_box :response_data %>
+                  <%= response.label %>
+                </label>
+              <% end %>
+              </div>
+            </div>
+          </div>
+        <% when 'radio_buttons' %>
+          <div class="control-group">
+            <label class="control-label"><%= q.content %></label>
+            <div class="controls form-group">
+              <div class="btn-group btn-group-vertical col-sm-12" data-toggle="buttons-radio">
+              <% q.responses.each do |response| %>
+                <label class="btn btn-transparent" data-toggle-class="btn-default" data-toggle-passive-class="btn-inverse">
+                  <%= q_fields.radio_button :response_data, 1 %>
+                  <%= response.label %>
+                </label>
+              <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
       <% end %>
     <% end %>
-  <% end %>
+  </fieldset>
 
-  <%= f.button :submit, 'Submit', { class: 'btn-primary btn-large' } %>
+  <%= f.submit 'Submit', { class: 'btn-primary btn-large' } %>
 <% end %>

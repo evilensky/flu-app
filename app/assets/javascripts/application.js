@@ -12,8 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require twitter/bootstrap
-//= require turbolinks
+//= require twitter/bootstrap/bootstrap-tooltip
+//= require twitter/bootstrap/bootstrap-popover
+//= require twitter/bootstrap/bootstrap-button
+//= require picker-3.3.0.min
+//= require picker.date-3.3.0.min
 //= require_tree .
 
 $(function() { FastClick.attach(document.body); });

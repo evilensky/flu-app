@@ -9,5 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require picker-classic-3.3.0
+ *= require picker-classic.date-3.3.0
  *= require_tree .
  */

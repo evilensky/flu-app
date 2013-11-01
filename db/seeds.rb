@@ -1,10 +1,9 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+User.create({
+  email: 'ericcf@northwestern.edu',
+  password: 'HIltswaltb',
+  password_confirmation: 'HIltswaltb'
+})
+
 Survey.create([
   { title: 'Baseline' },
   { title: 'Daily' },
@@ -13,12 +12,12 @@ Survey.create([
 
 baseline = Survey.find_by_title('Baseline')
 Question.create([
-  { data_label: 'Q1', content: 'Age', survey: baseline, input_type: 'string' },
+  { data_label: 'Q1', content: 'Age', survey: baseline, input_type: 'integer' },
   { data_label: 'Q2', content: 'Gender', survey: baseline, input_type: 'radio_buttons' },
   { data_label: 'Q3', content: 'Weight (lbs.)', survey: baseline, input_type: 'string' },
   { data_label: 'Q4', content: 'Height (ft.)', survey: baseline, input_type: 'string' },
   { data_label: 'Q5', content: 'Height (in.)', survey: baseline, input_type: 'string' },
-  { data_label: 'Q6', content: 'When did your Flu symptoms start? (mm/dd/yyyy)', survey: baseline, input_type: 'string' },
+  { data_label: 'Q6', content: 'When did your Flu symptoms start? (mm/dd/yyyy)', survey: baseline, input_type: 'date' },
   { data_label: 'Q7', content: 'Did you get a Flu shot this year (2013)?', survey: baseline, input_type: 'radio_buttons' },
   { data_label: 'Q8', content: 'Did you get a Flu shot last year (2012)?', survey: baseline, input_type: 'radio_buttons' },
   { data_label: 'Q9', content: 'Do you have any of the following conditions? (mark all that apply)', survey: baseline, input_type: 'check_boxes' }
@@ -47,14 +46,16 @@ Response.create([
 conditions = Question.find_by_data_label('Q9')
 Response.create([
   { label: 'Diabetes', value: 1, question: conditions },
-  { label: 'COPD', value: 2, question: conditions },
+  { label: 'COPD/Emphysema/Asthma', value: 2, question: conditions },
   { label: 'Asthma', value: 3, question: conditions },
   { label: 'Cancer', value: 4, question: conditions },
-  { label: 'Immune compromise related to medications (chronic steroids, immune modulators, etc)', value: 5, question: conditions },
+  { label: 'Immune compromise related to medications (chronic steroids, immune modulators, other)', value: 5, question: conditions },
   { label: 'Transplant recipient', value: 6, question: conditions },
   { label: 'Heart failure', value: 7, question: conditions },
   { label: 'Kidney failure', value: 8, question: conditions },
-  { label: 'On dialysis', value: 9, question: conditions }
+  { label: 'On dialysis', value: 9, question: conditions },
+  { label: 'Neuro-muscular disorder (multiple sclerosis, paraplegia, quadriplegia, other)', value: 10, question: conditions },
+  { label: 'Cirrhosis', value: 11, question: conditions }
 ])
 
 daily = Survey.find_by_title('Daily')
@@ -75,17 +76,19 @@ Response.create([
   { label: 'Joint aches', value: 9, question: symptoms },
   { label: 'Chest pain ', value: 10, question: symptoms },
   { label: 'Abdominal pain', value: 11, question: symptoms },
-  { label: 'Diarrhea', value: 12, question: symptoms }
+  { label: 'Diarrhea', value: 12, question: symptoms },
+  { label: 'Taking Tamiflu', value: 13, question: symptoms },
+  { label: 'Taking antibiotics', value: 14, question: symptoms }
 ])
 
 day14 = Survey.find_by_title('Day 14')
 Question.create([
-  { data_label: 'Q11', content: 'Were you hospitalized?', survey: day14, input_type: 'radio_buttons' },
+  { data_label: 'Q11', content: 'Were you hospitalized because of the flu?', survey: day14, input_type: 'radio_buttons' },
   { data_label: 'Q12', content: 'Were you in the intensive care unit?', survey: day14, input_type: 'radio_buttons' },
   { data_label: 'Q13', content: 'Did you require mechanical ventilation?', survey: day14, input_type: 'radio_buttons' },
   { data_label: 'Q14', content: 'Did you receive Tamiflu?', survey: day14, input_type: 'radio_buttons' },
-  { data_label: 'Q15', content: 'Tamiflu start date (mm/dd/yyyy)', survey: day14, input_type: 'string' },
-  { data_label: 'Q16', content: 'Tamiflu end date (mm/dd/yyyy)', survey: day14, input_type: 'string' },
+  { data_label: 'Q15', content: 'Tamiflu start date (mm/dd/yyyy)', survey: day14, input_type: 'date' },
+  { data_label: 'Q16', content: 'Tamiflu end date (mm/dd/yyyy)', survey: day14, input_type: 'date' },
   { data_label: 'Q17', content: 'Were you diagnosed by a physician with any of these complications of the Flu? (mark all that apply)', survey: day14, input_type: 'check_boxes' }
 ])
 
