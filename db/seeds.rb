@@ -14,9 +14,9 @@ baseline = Survey.find_by_title('Baseline')
 Question.create([
   { data_label: 'Q1', content: 'Age', survey: baseline, input_type: 'integer' },
   { data_label: 'Q2', content: 'Gender', survey: baseline, input_type: 'radio_buttons' },
-  { data_label: 'Q3', content: 'Weight (lbs.)', survey: baseline, input_type: 'string' },
-  { data_label: 'Q4', content: 'Height (ft.)', survey: baseline, input_type: 'string' },
-  { data_label: 'Q5', content: 'Height (in.)', survey: baseline, input_type: 'string' },
+  { data_label: 'Q3', content: 'Weight (lbs.)', survey: baseline, input_type: 'integer' },
+  { data_label: 'Q4', content: 'Height (ft.)', survey: baseline, input_type: 'integer' },
+  { data_label: 'Q5', content: 'Height (in.)', survey: baseline, input_type: 'integer' },
   { data_label: 'Q6', content: 'When did your Flu symptoms start? (mm/dd/yyyy)', survey: baseline, input_type: 'date' },
   { data_label: 'Q7', content: 'Did you get a Flu shot this year (2013)?', survey: baseline, input_type: 'radio_buttons' },
   { data_label: 'Q8', content: 'Did you get a Flu shot last year (2012)?', survey: baseline, input_type: 'radio_buttons' },
