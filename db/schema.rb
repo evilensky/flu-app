@@ -11,10 +11,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130924152851) do
+ActiveRecord::Schema.define(version: 20131106174133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "blood_draw_appointments", force: true do |t|
+    t.integer  "user_id"
+    t.date     "date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "blood_draw_appointments", ["user_id"], name: "index_blood_draw_appointments_on_user_id", using: :btree
+
+  create_table "currently_ill_memberships", force: true do |t|
+    t.integer  "user_id"
+    t.date     "consented_on"
+    t.date     "enrolled_on"
+    t.date     "symptoms_started_on"
+    t.date     "tested_positive_on"
+    t.date     "tested_negative_on"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "currently_ill_memberships", ["user_id"], name: "index_currently_ill_memberships_on_user_id", using: :btree
+
+  create_table "previously_ill_memberships", force: true do |t|
+    t.integer  "user_id"
+    t.date     "consented_on"
+    t.date     "enrolled_on"
+    t.date     "symptoms_started_on"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "previously_ill_memberships", ["user_id"], name: "index_previously_ill_memberships_on_user_id", using: :btree
 
   create_table "questions", force: true do |t|
     t.string   "data_label"
@@ -67,7 +100,7 @@ ActiveRecord::Schema.define(version: 20130924152851) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "",    null: false
+    t.string   "email"
     t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"

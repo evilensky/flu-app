@@ -7,21 +7,21 @@
           <div class="control-group">
             <label class="control-label"><%= q.content %></label>
             <div class="controls form-group">
-              <%= q_fields.text_field :response_data, class: 'col-sm-6 col-xs-12' %>
+              <%= text_field_tag "survey[responses][#{ q.data_label }]", nil, class: 'col-sm-6 col-xs-12' %>
             </div>
           </div>
         <% when 'date' %>
           <div class="control-group">
             <label class="control-label"><%= q.content %></label>
             <div class="controls form-group">
-              <%= q_fields.text_field :response_data, class: 'col-sm-6 col-xs-12 datepicker' %>
+              <%= text_field_tag "survey[responses][#{ q.data_label }]", nil, class: 'col-sm-6 col-xs-12 datepicker' %>
             </div>
           </div>
         <% when 'integer' %>
           <div class="control-group">
             <label class="control-label"><%= q.content %></label>
             <div class="controls form-group">
-              <%= q_fields.number_field :response_data, class: 'col-sm-6 col-xs-12' %>
+              <%= number_field_tag "survey[responses][#{ q.data_label }]", nil, class: 'col-sm-6 col-xs-12' %>
             </div>
           </div>
         <% when 'check_boxes' %>
@@ -31,7 +31,7 @@
               <div class="btn-group btn-group-vertical col-sm-12" data-toggle="buttons-checkbox">
               <% q.responses.each do |response| %>
                 <label class="btn btn-transparent" data-toggle-class="btn-default" data-toggle-passive-class="btn-inverse">
-                  <%= q_fields.check_box :response_data %>
+                  <%= check_box_tag "survey[responses][#{ q.data_label }][]", response.id %>
                   <%= response.label %>
                 </label>
               <% end %>
@@ -45,7 +45,7 @@
               <div class="btn-group btn-group-vertical col-sm-12" data-toggle="buttons-radio">
               <% q.responses.each do |response| %>
                 <label class="btn btn-transparent" data-toggle-class="btn-default" data-toggle-passive-class="btn-inverse">
-                  <%= q_fields.radio_button :response_data, 1 %>
+                  <%= radio_button_tag "survey[responses][#{ q.data_label }]", response.id %>
                   <%= response.label %>
                 </label>
               <% end %>
