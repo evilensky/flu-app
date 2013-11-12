@@ -38,4 +38,4 @@ gem 'rails_admin'
 
 gem 'json', '1.8.0'
 
-gem 'mail_view', '~> 1.0.3', group: :development
+gem 'mail_view', '~> 1.0.3'
