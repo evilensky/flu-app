@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131106174133) do
+ActiveRecord::Schema.define(version: 20131112150921) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,12 @@ ActiveRecord::Schema.define(version: 20131106174133) do
   end
 
   add_index "blood_draw_appointments", ["user_id"], name: "index_blood_draw_appointments_on_user_id", using: :btree
+
+  create_table "consents", force: true do |t|
+    t.string   "email",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "currently_ill_memberships", force: true do |t|
     t.integer  "user_id"

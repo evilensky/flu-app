@@ -1,0 +1,24 @@
+<h2>Consent</h2>
+
+<section class="widget">
+  <div class="body">
+    <%= form_for @consent, html: { class: 'form-horizontal' } do |f| %>
+      <fieldset>
+        <div class="control-group">
+          <%= label :consent, :email, class: 'control-label' %>
+          <div class="controls form-group">
+            <div class="col-sm-8">
+              <%= f.email_field :email, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <div>
+            <%= f.button 'Submit', type: 'submit', class: 'btn btn-primary' %>
+          </div>
+        </div>
+      </fieldset>
+    <% end %>
+  </div>
+</section>

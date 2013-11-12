@@ -6,4 +6,11 @@ class User < ActiveRecord::Base
   has_one :currently_ill_membership, dependent: :destroy
   has_one :previously_ill_membership, dependent: :destroy
   has_one :blood_draw_appointment, dependent: :destroy
+
+  def self.create_with_random_password(attrs)
+    require 'securerandom'
+    password = SecureRandom.hex
+
+    create attrs.merge(password: password, password_confirmation: password)
+  end
 end
