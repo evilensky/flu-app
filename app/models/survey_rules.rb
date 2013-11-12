@@ -12,6 +12,10 @@ class SurveyRules
     Survey.find @survey_id
   end
 
+  def current_user
+    User.find @user_id
+  end
+
   def make_token
     @survey_id.to_s + @user_id.to_s.strip.downcase
   end

@@ -28,7 +28,7 @@ gem 'debugger', group: [:development, :test]
 # authentication
 gem 'devise'
 # authorization
-gem 'cancan'
+#gem 'cancan'
 # styles
 gem 'twitter-bootstrap-rails'
 # scheduling
@@ -37,3 +37,5 @@ gem 'whenever', require: false
 gem 'rails_admin'
 
 gem 'json', '1.8.0'
+
+gem 'mail_view', '~> 1.0.3', group: :development

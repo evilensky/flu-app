@@ -27,9 +27,12 @@ ActiveRecord::Schema.define(version: 20131112150921) do
 
   create_table "consents", force: true do |t|
     t.string   "email",      null: false
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "consents", ["user_id"], name: "index_consents_on_user_id", using: :btree
 
   create_table "currently_ill_memberships", force: true do |t|
     t.integer  "user_id"
@@ -92,6 +95,7 @@ ActiveRecord::Schema.define(version: 20131112150921) do
   create_table "survey_submissions", force: true do |t|
     t.integer  "user_id"
     t.integer  "survey_id"
+    t.text     "response_data"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

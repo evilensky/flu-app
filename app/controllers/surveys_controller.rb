@@ -8,6 +8,8 @@ class SurveysController < ApplicationController
 
     if survey_rules.validate_token? params[:survey_token]
       @survey = survey_rules.current_survey
+      @user = survey_rules.current_user
+      @survey_token = params[:survey_token]
     else
       redirect_to root_url,
           alert: "Sorry, it looks like you're not scheduled to take a survey right now."

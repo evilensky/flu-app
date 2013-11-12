@@ -1,2 +1,3 @@
 $ ->
-  $('.datepicker').pickadate()
+  $('.datepicker').pickadate
+    max: new Date
