@@ -6,8 +6,8 @@ class ConsentsController < ApplicationController
   def create
     @consent = Consent.new params.require(:consent).permit(:email)
 
-    if @consent.save
-      user = User.create_with_random_password email: @consent.email
+    if @consent.save && User.create_with_random_password(email: @consent.email)
+      user = User.find_by_email(@consent.email)
       @consent.update_column :user_id, user.id
       ParticipantMailer.baseline_survey_email(user).deliver
       render :success
