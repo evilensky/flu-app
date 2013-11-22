@@ -14,4 +14,10 @@ class ParticipantMailer < ActionMailer::Base
     mail to: @user.email,
          subject: 'Fluomics: Daily Survey'
   end
+
+  def blood_draw_appointment_email(user)
+    @user = user
+    mail to: @user.email,
+         subject: 'Fluomics: Blood draw appointment'
+  end
 end

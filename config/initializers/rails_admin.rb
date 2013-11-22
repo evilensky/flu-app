@@ -41,6 +41,7 @@ RailsAdmin.config do |config|
   config.model 'Consent' do
     list do
       field :user
+      field :type
       field :created_at
     end
   end

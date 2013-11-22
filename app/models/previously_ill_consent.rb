@@ -1,0 +1,2 @@
+class PreviouslyIllConsent < Consent
+end

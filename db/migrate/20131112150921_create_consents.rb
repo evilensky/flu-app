@@ -3,6 +3,7 @@ class CreateConsents < ActiveRecord::Migration
     create_table :consents do |t|
       t.string :email, null: false
       t.references :user, index: true
+      t.string :type
 
       t.timestamps
     end

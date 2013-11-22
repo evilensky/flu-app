@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20131112150921) do
   create_table "consents", force: true do |t|
     t.string   "email",      null: false
     t.integer  "user_id"
+    t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

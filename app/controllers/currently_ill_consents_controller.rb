@@ -1,10 +1,10 @@
-class ConsentsController < ApplicationController
+class CurrentlyIllConsentsController < ApplicationController
   def new
-    @consent = Consent.new
+    @consent = CurrentlyIllConsent.new
   end
 
   def create
-    @consent = Consent.new params.require(:consent).permit(:email)
+    @consent = CurrentlyIllConsent.new params.require(:currently_ill_consent).permit(:email)
 
     if @consent.save && User.create_with_random_password(email: @consent.email)
       user = User.find_by_email(@consent.email)

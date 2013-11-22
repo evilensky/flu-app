@@ -15,7 +15,7 @@ class BloodDrawAppointment < ActiveRecord::Base
   end
 
   def within_accepted_date_range
-    if date <= Date.today || date > (Date.today + 2.months)
+    if date && (date <= Date.today || date > (Date.today + 2.months))
       errors.add :date, 'the date may be as early as tomorrow and as late as two months from today'
     end
   end
