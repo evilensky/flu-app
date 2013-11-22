@@ -8,10 +8,11 @@ class ConsentsController < ApplicationController
 
     if @consent.save
       user = User.create_with_random_password email: @consent.email
-      @consent.update_column user_id: user.id
+      @consent.update_column :user_id, user.id
       ParticipantMailer.baseline_survey_email(user).deliver
       render :success
     else
+      flash.now[:danger] = "We're sorry, there was a problem submitting your consent: #{ @consent.errors.messages.values.map(&:first).join '; ' }."
       render :new
     end
   end
