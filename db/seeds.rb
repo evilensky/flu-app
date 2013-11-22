@@ -1,8 +1,73 @@
-User.create({
-  email: 'ericcf@northwestern.edu',
-  password: 'HIltswaltb',
-  password_confirmation: 'HIltswaltb'
-})
+User.create([
+  {
+    email: 'admin@example.com',
+    password: 'foobar1!',
+    password_confirmation: 'foobar1!'
+  },
+  {
+    email: 'admin2@example.com',
+    password: 'foobar1!',
+    password_confirmation: 'foobar1!'
+  },
+  {
+    email: 'admin3@example.com',
+    password: 'foobar1!',
+    password_confirmation: 'foobar1!'
+  },
+  {
+    email: 'admin4@example.com',
+    password: 'foobar1!',
+    password_confirmation: 'foobar1!'
+  },
+  {
+    email: 'admin5@example.com',
+    password: 'foobar1!',
+    password_confirmation: 'foobar1!'
+  },
+  {
+    email: 'admin6@example.com',
+    password: 'foobar1!',
+    password_confirmation: 'foobar1!'
+  },
+  {
+    email: 'admin7@example.com',
+    password: 'foobar1!',
+    password_confirmation: 'foobar1!'
+  },
+  {
+    email: 'admin8@example.com',
+    password: 'foobar1!',
+    password_confirmation: 'foobar1!'
+  },
+  {
+    email: 'admin9@example.com',
+    password: 'foobar1!',
+    password_confirmation: 'foobar1!'
+  },
+  {
+    email: 'admin10@example.com',
+    password: 'foobar1!',
+    password_confirmation: 'foobar1!'
+  },
+  {
+    email: 'admin11@example.com',
+    password: 'foobar1!',
+    password_confirmation: 'foobar1!'
+  }
+])
+
+BloodDrawAppointment.create([
+  { user_id: 1, date: '2013-11-28' },
+  { user_id: 2, date: '2013-11-28' },
+  { user_id: 3, date: '2013-11-28' },
+  { user_id: 4, date: '2013-11-28' },
+  { user_id: 5, date: '2013-11-28' },
+  { user_id: 6, date: '2013-11-28' },
+  { user_id: 7, date: '2013-11-28' },
+  { user_id: 8, date: '2013-11-28' },
+  { user_id: 9, date: '2013-11-28' },
+  { user_id: 10, date: '2013-11-28' }
+])
 
 Survey.create([
   { title: 'Baseline' },

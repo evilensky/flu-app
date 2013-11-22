@@ -26,9 +26,9 @@
       <div class="container">
         <div class="row">
           <div class="col-md-7">
-            <div class="notifications">
-              <%= bootstrap_flash %>
-            </div>
+            <% flash.each do |type, message| %>
+              <div class="alert alert-<%= type %>"><%= message %></div>
+            <% end %>
 
             <%= yield %>
           </div>

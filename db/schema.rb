@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(version: 20131112150921) do
   enable_extension "plpgsql"
 
   create_table "blood_draw_appointments", force: true do |t|
-    t.integer  "user_id"
-    t.date     "date"
+    t.integer  "user_id",    null: false
+    t.date     "date",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

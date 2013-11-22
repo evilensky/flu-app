@@ -1,0 +1,20 @@
+<h2>When would you like to schedule your blood draw?</h2>
+
+<section class="widget">
+  <div class="body">
+    <%= form_for @blood_draw_appointment, html: { class: 'form-horizontal label-left' } do |f| %>
+      <%= f.hidden_field :user_id %>
+      <%= hidden_field_tag :token, @token %>
+      <fieldset>
+        <div class="control-group">
+          <%= f.label :date, class: 'control-label' %>
+          <div class="controls form-group">
+            <%= f.text_field :date, class: 'col-sm-6 col-xs-12 datepicker', :'data-max-date' => "#{ Date.today + 2.months }T12:00", :'data-min-date' => "#{ Date.tomorrow }T12:00" %>
+          </div>
+        </div>
+      </fieldset>
+
+      <%= f.submit 'Submit', { class: 'btn btn-primary btn-large' } %>
+    <% end %>
+  </div>
+</section>
