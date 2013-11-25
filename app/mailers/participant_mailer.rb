@@ -1,6 +1,18 @@
 class ParticipantMailer < ActionMailer::Base
   default from: "fluomics@northwestern.edu"
 
+  def negative_flu_test_email(user)
+    mail to: user.email,
+         subject: 'Fluomics: Status'
+  end
+
+  def positive_flu_test_email(user, surveys)
+    @user = user
+    @surveys = surveys
+    mail to: @user.email,
+         subject: 'Fluomics: Status'
+  end
+
   def baseline_survey_email(user)
     @user = user
     @survey = Survey.find_by_title 'Baseline'

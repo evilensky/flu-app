@@ -1,0 +1,4 @@
+Fluomics Flu Test Status
+===============================================
+
+Thank you for agreeing to participate in the FLUOMICS Study. We have reviewed the result of your Influenza A test and the result is positive. This means you have Influenza A.  To continue your participation in the study, follow this link: <%= survey_url(@surveys.first, survey_token: SurveyRules.new(@surveys.first.id, @user.id).make_token, user_id: @user.id) %>. Please contact your physician if you have questions about the test results or any other medical questions.

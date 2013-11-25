@@ -1,7 +1,18 @@
 class MailPreview < MailView
+  def negative_flu_test_email
+    user = User.first
+    ParticipantMailer.negative_flu_test_email user
+  end
+
+  def positive_flu_test_email
+    user = User.first
+    surveys = ['Daily'].map {|t| Survey.find_by_title(t) }
+    ParticipantMailer.positive_flu_test_email user, surveys
+  end
+
   def baseline_survey_email
     user = User.first
-    ParticipantMailer.baseline_survey_email(user)
+    ParticipantMailer.baseline_survey_email user
   end
 
   def daily_survey_email
