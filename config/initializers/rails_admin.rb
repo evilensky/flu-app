@@ -27,6 +27,9 @@ RailsAdmin.config do |config|
   # Label methods for model instances:
   # config.label_methods << :description # Default is [:name, :title]
 
+  config.authenticate_with do
+    redirect_to '/users/sign_in' unless (current_user && current_user.is_admin?)
+  end
 
   ################  Model configuration  ################
 
