@@ -16,6 +16,11 @@ class ParticipantMailer < ActionMailer::Base
   end
 
   def blood_draw_appointment_email(user)
+    require 'prawn'
+    Prawn::Document.generate('tmp/consent.pdf') do
+      text 'You consented!'
+    end
+    attachments['consent.pdf'] = File.read('tmp/consent.pdf')
     @user = user
     mail to: @user.email,
          subject: 'Fluomics: Blood draw appointment'

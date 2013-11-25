@@ -37,5 +37,7 @@ gem 'whenever', require: false
 gem 'rails_admin'
 
 gem 'json', '1.8.0'
-
+# email preview
 gem 'mail_view', '~> 1.0.3'
+# pdf generation
+gem 'prawn'
