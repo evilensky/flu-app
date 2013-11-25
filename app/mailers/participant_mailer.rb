@@ -8,9 +8,9 @@ class ParticipantMailer < ActionMailer::Base
          subject: 'Fluomics: Baseline Survey'
   end
 
-  def daily_survey_email(user)
+  def daily_survey_email(user, surveys)
     @user = user
-    @survey = Survey.find_by_title 'Daily'
+    @surveys = surveys
     mail to: @user.email,
          subject: 'Fluomics: Daily Survey'
   end

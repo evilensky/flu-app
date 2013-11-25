@@ -105,7 +105,8 @@ ActiveRecord::Schema.define(version: 20131112150921) do
   add_index "survey_submissions", ["user_id"], name: "index_survey_submissions_on_user_id", using: :btree
 
   create_table "surveys", force: true do |t|
-    t.string   "title"
+    t.string   "title",              null: false
+    t.text     "days_to_administer"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -8,9 +8,9 @@ User.create(
 )
 
 Survey.create([
-  { title: 'Baseline' },
-  { title: 'Daily' },
-  { title: 'Day 14' }
+  { title: 'Baseline', days_to_administer: [] },
+  { title: 'Daily', days_to_administer: (1..14).to_a },
+  { title: 'Day 14', days_to_administer: [14] }
 ])
 
 baseline = Survey.find_by_title('Baseline')

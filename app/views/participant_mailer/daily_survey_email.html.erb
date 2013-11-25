@@ -41,7 +41,9 @@
                       <table class="twelve columns">
                         <tr>
                           <td class="panel">
-                            <p>Phasellus dictum sapien a neque luctus cursus. Pellentesque sem dolor, fringilla et pharetra vitae. <%= link_to 'Take the Daily Survey', survey_url(@survey, survey_token: SurveyRules.new(@survey.id, @user.id).make_token, user_id: @user.id) %></p>
+                            <% @surveys.each do |survey| %>
+                              <p><%= link_to "Take the #{ survey.title } Survey", survey_url(survey, survey_token: SurveyRules.new(survey.id, @user.id).make_token, user_id: @user.id) %></p>
+                            <% end %>
                           </td>
                           <td class="expander"></td>
                         </tr>

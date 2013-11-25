@@ -15,4 +15,12 @@ class User < ActiveRecord::Base
 
     create attrs.merge(password: password, password_confirmation: password)
   end
+
+  def day_of_study
+    membership = currently_ill_membership
+
+    if membership
+      Date.today - membership.symptoms_started_on + 1
+    end
+  end
 end

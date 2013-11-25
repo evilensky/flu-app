@@ -6,7 +6,8 @@ class MailPreview < MailView
 
   def daily_survey_email
     user = User.first
-    ParticipantMailer.daily_survey_email(user)
+    surveys = ['Daily', 'Day 14'].map {|t| Survey.find_by_title(t) }
+    ParticipantMailer.daily_survey_email user, surveys
   end
 
   def blood_draw_appointment_email
