@@ -125,7 +125,19 @@ RailsAdmin.config do |config|
     list do
       field :email
       field :created_at
-      field :admin
+      field :is_admin
+    end
+
+    edit do
+      field :email
+      field :password
+      field :password_confirmation
+      field :is_admin
+      field :survey_submissions
+      field :consent
+      field :currently_ill_membership
+      field :previously_ill_membership
+      field :blood_draw_appointment
     end
   end
 end
