@@ -15,3 +15,12 @@
   margin-top: 5px;
   white-space: normal;
 }
+
+ol, ul {
+  list-style: inherit;
+  padding: inherit;
+}
+
+ol > li {
+  list-style-type: decimal;
+}

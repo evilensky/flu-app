@@ -26,7 +26,15 @@ ActiveRecord::Schema.define(version: 20131112150921) do
   add_index "blood_draw_appointments", ["user_id"], name: "index_blood_draw_appointments_on_user_id", using: :btree
 
   create_table "consents", force: true do |t|
-    t.string   "email",      null: false
+    t.string   "first_name",           null: false
+    t.string   "last_name",            null: false
+    t.date     "date_of_birth",        null: false
+    t.string   "email",                null: false
+    t.string   "may_save_info"
+    t.string   "may_not_save_info"
+    t.string   "may_be_contacted"
+    t.string   "may_not_be_contacted"
+    t.boolean  "has_read_consent",     null: false
     t.integer  "user_id"
     t.string   "type"
     t.datetime "created_at"
