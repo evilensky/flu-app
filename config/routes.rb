@@ -2,7 +2,7 @@ FluApp::Application.routes.draw do
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
   devise_for :users
 
-  root 'currently_ill_consents#new'
+  root 'recruitment#index'
 
   resources :surveys, only: [:index, :show]
   resources :survey_submissions, only: :create
