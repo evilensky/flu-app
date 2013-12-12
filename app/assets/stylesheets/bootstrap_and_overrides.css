@@ -24,3 +24,7 @@ ol, ul {
 ol > li {
   list-style-type: decimal;
 }
+
+hr {
+  border-top: 1px solid #eee;
+}
