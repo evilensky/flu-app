@@ -9,6 +9,7 @@ class PreviouslyIllConsentsController < ApplicationController
     if @consent.save && User.create_with_random_password(email: @consent.email)
       user = User.find_by_email(@consent.email)
       @consent.update_column :user_id, user.id
+      PreviouslyIllMembership.create user: user, consented_on: Date.today
       ParticipantMailer.blood_draw_appointment_email(user).deliver
       ResearcherMailer.previously_ill_consent_email(@consent).deliver
       render :success

@@ -11,7 +11,7 @@ class SurveysController < ApplicationController
       @user = survey_rules.current_user
       @survey_token = params[:survey_token]
     else
-      redirect_to error_url,
+      redirect_to errors_url,
           alert: "Sorry, it looks like you're not scheduled to take a survey right now."
     end
   end
