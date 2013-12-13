@@ -1,0 +1,18 @@
+<% if consent.may_save_info.strip != '' %>
+I agree to have my de-identified information placed in a repository for any future research or shared with other researchers. <u><%= consent.may_save_info %></u>
+<% elsif consent.may_not_save_info != '' %>
+I do not agree to have my de-identified information placed in a repository for any future research or shared with other researchers. <u><%= consent.may_not_save_info %></u>
+<% end %>
+
+<% if consent.may_be_contacted.strip != '' %>
+I agree that someone from the research program may contact me about offers to take part in more research. <u><%= consent.may_be_contacted %></u>
+<% elsif consent.may_not_be_contacted != '' %>
+I do not agree that someone from the research program may contact me about offers to take part in more research. <u><%= consent.may_not_be_contacted %></u>
+<% end %>
+
+I have read this consent form and the research study has been explained to me. I have been given time to ask questions, and have been told whom to contact if I have more questions. I agree to be in the research study described above and this is signified by checking the box below and typing my name in the space provided. I will print a copy of this consent form for my records after I complete this authorization. (A copy of the consent will be sent to your email)
+<u><%= "#{ consent.first_name } #{ consent.last_name }" %></u>
+
+Date of birth: <%= consent.date_of_birth %>
+
+email: <%= consent.email %>
