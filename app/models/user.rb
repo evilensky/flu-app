@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   def day_of_study
     membership = currently_ill_membership
 
-    if membership
+    if membership && membership.symptoms_started_on
       Date.today - membership.symptoms_started_on + 1
     end
   end
