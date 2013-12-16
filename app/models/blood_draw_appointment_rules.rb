@@ -1,3 +1,5 @@
+require 'digest'
+
 class BloodDrawAppointmentRules
   def initialize(user_id)
     @user_id = user_id
@@ -12,6 +14,6 @@ class BloodDrawAppointmentRules
   end
 
   def make_token
-    "blood-draw-appointment#{ @user_id }"
+    Digest::MD5.hexdigest "blood-draw-appointment#{ @user_id }"
   end
 end

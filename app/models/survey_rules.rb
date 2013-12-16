@@ -1,3 +1,5 @@
+require 'digest'
+
 class SurveyRules
   def initialize(survey_id, user_id)
     @survey_id = survey_id
@@ -17,6 +19,6 @@ class SurveyRules
   end
 
   def make_token
-    @survey_id.to_s + @user_id.to_s.strip.downcase
+    Digest::MD5.hexdigest(@survey_id.to_s + @user_id.to_s.strip.downcase)
   end
 end
