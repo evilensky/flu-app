@@ -1,9 +1,11 @@
 Fluomics Daily Survey
 ===============================================
 
-Phasellus dictum sapien a neque luctus cursus. Pellentesque sem dolor, fringilla et pharetra vitae.
-
-Phasellus dictum sapien a neque luctus cursus. Pellentesque sem dolor, fringilla et pharetra vitae. consequat vel lacus. Sed iaculis pulvinar ligula, ornare fringilla ante viverra et. In hac habitasse platea dictumst. Donec vel orci mi, eu congue justo. Integer eget odio est, eget malesuada lorem. Aenean sed tellus dui, vitae viverra risus. Nullam massa sapien, pulvinar eleifend fringilla id, convallis eget nisi. Mauris a sagittis dui. Pellentesque non lacinia mi. Fusce sit amet libero sit amet erat venenatis sollicitudin vitae vel eros. Cras nunc sapien, interdum sit amet porttitor ut, congue quis urna.
+<% if @surveys.count == 1 %>
+Please follow the link to complete your daily flu symptoms checklist.  It should only take a minute!
+<% else %>
+Today is the last day of tracking your flu symptoms!  Thank you so much for your participation.
+<% end %>
 
 <% @surveys.each do |survey| %>
 Take the <%= survey.title %> Survey here: <%= survey_url(survey, survey_token: SurveyRules.new(survey.id, @user.id).make_token, user_id: @user.id) %>
