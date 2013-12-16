@@ -1,1 +1,5 @@
-<h2>Thank you for responding to the survey</h2>
+<% if @survey_submission.survey.survey_completion_message %>
+  <h2><%= @survey_submission.survey.survey_completion_message.success_body.html_safe %></h2>
+<% else %>
+  <h2>Thank you for responding to the survey</h2>
+<% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131213210153) do
+ActiveRecord::Schema.define(version: 20131216173229) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -100,6 +100,15 @@ ActiveRecord::Schema.define(version: 20131213210153) do
   end
 
   add_index "responses", ["question_id"], name: "index_responses_on_question_id", using: :btree
+
+  create_table "survey_completion_messages", force: true do |t|
+    t.integer  "survey_id"
+    t.text     "success_body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "survey_completion_messages", ["survey_id"], name: "index_survey_completion_messages_on_survey_id", using: :btree
 
   create_table "survey_submissions", force: true do |t|
     t.integer  "user_id"
