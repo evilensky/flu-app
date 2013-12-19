@@ -27,8 +27,6 @@ gem 'debugger', group: [:development, :test]
 
 # authentication
 gem 'devise'
-# authorization
-#gem 'cancan'
 # styles
 gem 'twitter-bootstrap-rails'
 # scheduling
@@ -41,3 +39,7 @@ gem 'json', '1.8.0'
 gem 'mail_view', '~> 1.0.3'
 # pdf generation
 gem 'prawn'
+
+group :development, :test do
+  gem 'debugger'
+end

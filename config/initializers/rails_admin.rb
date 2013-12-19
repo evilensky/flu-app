@@ -128,6 +128,17 @@ RailsAdmin.config do |config|
       field :is_admin
     end
 
+    show do
+      field :email
+      field :survey_submissions
+      field :consent
+      field :day_of_study do
+        pretty_value do
+          value.to_i
+        end
+      end
+    end
+
     edit do
       field :email
       field :password

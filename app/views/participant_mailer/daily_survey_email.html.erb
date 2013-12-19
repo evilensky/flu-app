@@ -47,7 +47,7 @@
                               <% end %>
                             </p>
                             <% @surveys.each do |survey| %>
-                              <p><%= link_to survey.title, survey_url(survey, survey_token: SurveyRules.new(survey.id, @user.id).make_token, user_id: @user.id) %></p>
+                              <p><%= link_to "Complete your #{ survey.title } Survey", survey_url(survey, survey_token: SurveyRules.new(survey.id, @user.id).make_token, user_id: @user.id) %></p>
                             <% end %>
                           </td>
                           <td class="expander"></td>

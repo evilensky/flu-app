@@ -8,6 +8,6 @@ Today is the last day of tracking your flu symptoms!  Thank you so much for your
 <% end %>
 
 <% @surveys.each do |survey| %>
-Take the <%= survey.title %> Survey here: <%= survey_url(survey, survey_token: SurveyRules.new(survey.id, @user.id).make_token, user_id: @user.id) %>
+Complete your <%= survey.title %> Survey here: <%= survey_url(survey, survey_token: SurveyRules.new(survey.id, @user.id).make_token, user_id: @user.id) %>
 
 <% end %>
