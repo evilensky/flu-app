@@ -128,6 +128,122 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model 'BaselineSurveySubmission' do
+    list do
+      field :unique_identifier
+      field :age
+      field :gender
+      field :weight
+      field :height
+      field :date_flu
+      field :vaccine13
+      field :vaccine12
+      field :diabetes
+      field :copd
+      field :asthma
+      field :cancer
+      field :immune_compromise
+      field :transplant
+      field :heart_f
+      field :kidney_f
+      field :dialysis
+      field :neuro_muscular
+      field :cirrhosis
+    end
+
+    export do
+      field :unique_identifier
+      field :age
+      field :gender
+      field :weight
+      field :height
+      field :date_flu
+      field :vaccine13
+      field :vaccine12
+      field :diabetes
+      field :copd
+      field :asthma
+      field :cancer
+      field :immune_compromise
+      field :transplant
+      field :heart_f
+      field :kidney_f
+      field :dialysis
+      field :neuro_muscular
+      field :cirrhosis
+    end
+  end
+
+  config.model 'DailySurveySubmission' do
+    list do
+      field :unique_identifier
+      field :questionnaire_day
+      field :fever
+      field :chills
+      field :sore_throat
+      field :cough
+      field :difficulty_breathing
+      field :runny_nose_or_sinus_congestion
+      field :headache
+      field :muscle_aches
+      field :joint_aches
+      field :chest_pain
+      field :abdominal_pain
+      field :diarrhea
+      field :taking_tamiflu
+      field :taking_antibiotics
+    end
+
+    export do
+      field :unique_identifier
+      field :questionnaire_day
+      field :fever
+      field :chills
+      field :sore_throat
+      field :cough
+      field :difficulty_breathing
+      field :runny_nose_or_sinus_congestion
+      field :headache
+      field :muscle_aches
+      field :joint_aches
+      field :chest_pain
+      field :abdominal_pain
+      field :diarrhea
+      field :taking_tamiflu
+      field :taking_antibiotics
+    end
+  end
+
+  config.model 'DayFourteenSurveySubmission' do
+    list do
+      field :unique_identifier
+      field :hospitalized
+      field :icu
+      field :mech_vent
+      field :tamiflu
+      field :tamiflu_date1
+      field :tamiflu_date2
+      field :pneumonia
+      field :bronchitis
+      field :sinusitis
+      field :otitis
+    end
+
+    export do
+      field :unique_identifier
+      field :hospitalized
+      field :icu
+      field :mech_vent
+      field :tamiflu
+      field :tamiflu_date1
+      field :tamiflu_date2
+      field :pneumonia
+      field :bronchitis
+      field :sinusitis
+      field :otitis
+    end
+  end
+
   config.model 'User' do
     object_label_method :email
 
