@@ -10,11 +10,15 @@ class BaselineSurveySubmission < SurveySubmission
   end
 
   def gender
-    response_data['Q2']
+    if response_data['Q2'] == 1
+      0
+    elsif response_data['Q2'] == 2
+      1
+    end
   end
 
   def weight
-    response_data['Q3']
+    "#{ response_data['Q3'] } lbs."
   end
 
   def height
