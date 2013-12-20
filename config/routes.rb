@@ -3,7 +3,7 @@ FluApp::Application.routes.draw do
   devise_for :users
 
   root 'recruitment#index'
-  get 'recruitment/enroll', :as => 'enroll'
+  get 'recruitment/links', :as => 'links'
   get 'recruitment/about_us', :as => 'about_us'
 
   resources :surveys, only: [:index, :show]

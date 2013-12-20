@@ -21,16 +21,16 @@
       <h4><%= link_to 'Fluomics', root_url %></h4>
     </div>
 
-    <nav id="sidebar" class="sidebar nav-collapse collapse">
+    <nav id="sidebar" class="sidebar nav-collapse collapse" role="navigation">
       <ul id="side-nav" class="side-nav">
         <li class="<%= current_page?(root_path) ? 'active' : 'panel' %>">
           <%= link_to root_path do %>
             <span class="name">Home</span>
           <% end %>
         </li>
-        <li class="<%= current_page?(enroll_path) ? 'active' : 'panel' %>">
-          <%= link_to enroll_path do %>
-            <span class="name">Enroll</span>
+        <li class="<%= current_page?(links_path) ? 'active' : 'panel' %>">
+          <%= link_to links_path do %>
+            <span class="name">Links</span>
           <% end %>
         </li>
         <li class="<%= current_page?(about_us_path) ? 'active' : 'panel' %>">
@@ -42,8 +42,18 @@
     </nav>
 
     <div class="wrap">
-      <header class="content container"></header>
-      <div class="container">
+      <header class="page-header">
+        <div class="navbar">
+          <ul class="nav navbar-nav navbar-right pull-right">
+            <li class="visible-xs">
+              <%= link_to('#', class: 'btn-navbar collapsed', :'data-toggle' => 'collapse', :'data-target' => '.sidebar') do %>
+                <i class="icon-reorder"></i>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </header>
+      <div class="content container">
         <div class="row">
           <div class="col-md-7">
             <% flash.each do |type, message| %>
@@ -51,6 +61,12 @@
             <% end %>
 
             <%= yield %>
+          </div>
+          <div class="col-md-3 offset-2">
+            <%= image_tag 'NU_Logo.png' %>
+            <%= link_to image_url('flu.png') do %>
+              <%= image_tag('flu-thumb.png') %>
+            <% end %>
           </div>
         </div><!--/row-->
 

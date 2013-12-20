@@ -2,7 +2,7 @@ class RecruitmentController < ApplicationController
   def index
   end
 
-  def enroll
+  def links
   end
 
   def about_us
