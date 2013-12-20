@@ -35,9 +35,18 @@ RailsAdmin.config do |config|
 
   config.model 'BloodDrawAppointment' do
     list do
-      field :user
-      field :date
-      field :created_at
+      field :participant_id do
+        label 'Id'
+      end
+      field :participant_full_name do
+        label 'Name'
+      end
+      field :participant_date_of_birth do
+        label 'DOB'
+      end
+      field :date do
+        label 'Appointment date'
+      end
     end
   end
 

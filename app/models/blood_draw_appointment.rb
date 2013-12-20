@@ -8,6 +8,16 @@ class BloodDrawAppointment < ActiveRecord::Base
   validates_uniqueness_of :user_id, message: 'a blood draw has already been scheduled'
   validate :appointment_day_not_full, :within_accepted_date_range
 
+  delegate :participant_id, to: :user, prefix: false
+
+  def participant_full_name
+    "#{ user.consent.first_name } #{ user.consent.last_name }"
+  end
+
+  def participant_date_of_birth
+    user.consent.date_of_birth
+  end
+
   def appointment_day_not_full
     if self.class.where(date: date).count == MAX_APPOINTMENTS_PER_DAY
       errors.add :date, 'there are no appointments available on that date'
