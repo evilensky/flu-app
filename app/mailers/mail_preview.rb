@@ -22,12 +22,12 @@ class MailPreview < MailView
   end
 
   def blood_draw_appointment_email
-    user = User.first
+    user = PreviouslyIllConsent.last.user
     ParticipantMailer.blood_draw_appointment_email user
   end
 
   def previously_ill_consent_email
-    consent = PreviouslyIllConsent.first
+    consent = PreviouslyIllConsent.last
     ResearcherMailer.previously_ill_consent_email consent
   end
 end

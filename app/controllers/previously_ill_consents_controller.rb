@@ -12,7 +12,7 @@ class PreviouslyIllConsentsController < ApplicationController
       PreviouslyIllMembership.create user: user, consented_on: Date.today
       ParticipantMailer.blood_draw_appointment_email(user).deliver
       ResearcherMailer.previously_ill_consent_email(@consent).deliver
-      render :success
+      redirect_to new_blood_draw_appointment_url(token: BloodDrawAppointmentRules.new(user.id).make_token, blood_draw_appointment: { user_id: user.id })
     else
       flash.now[:danger] = "We're sorry, there was a problem submitting your consent: #{ @consent.errors.messages.values.map(&:first).join '; ' }."
       render :new

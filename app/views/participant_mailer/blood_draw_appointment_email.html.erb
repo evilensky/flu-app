@@ -44,23 +44,6 @@
                   </tr>
                 </table>
               
-                <table class="row callout">
-                  <tr>
-                    <td class="wrapper last">
-
-                      <table class="twelve columns">
-                        <tr>
-                          <td class="panel">
-                            <p>Thank you for your participation!  You are helping scientists to better understand and treat the flu. <%= link_to 'Schedule your blood draw', new_blood_draw_appointment_url(token: BloodDrawAppointmentRules.new(@user.id).make_token, blood_draw_appointment: { user_id: @user.id }) %></p>
-                          </td>
-                          <td class="expander"></td>
-                        </tr>
-                      </table>
-
-                    </td>
-                  </tr>
-                </table>
-              
               <!-- container end below -->
               </td>
             </tr>

@@ -11,6 +11,3 @@ As a participant, you will:
 * You will receive $10 for completing the blood draw.
 
 If you have any questions about scheduling or your participation, please call 312-503-FLUA (3582).
-
-Thank you for your participation!  You are helping scientists to better understand and treat the flu. Schedule your blood draw here: <%= new_blood_draw_appointment_url(token: BloodDrawAppointmentRules.new(@user.id).make_token, user_id: @user.id) %>
-
