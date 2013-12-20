@@ -21,6 +21,26 @@
       <h4><%= link_to 'Fluomics', root_url %></h4>
     </div>
 
+    <nav id="sidebar" class="sidebar nav-collapse collapse">
+      <ul id="side-nav" class="side-nav">
+        <li class="<%= current_page?(root_path) ? 'active' : 'panel' %>">
+          <%= link_to root_path do %>
+            <span class="name">Home</span>
+          <% end %>
+        </li>
+        <li class="<%= current_page?(enroll_path) ? 'active' : 'panel' %>">
+          <%= link_to enroll_path do %>
+            <span class="name">Enroll</span>
+          <% end %>
+        </li>
+        <li class="<%= current_page?(about_us_path) ? 'active' : 'panel' %>">
+          <%= link_to about_us_path do %>
+            <span class="name">About Us</span>
+          <% end %>
+        </li>
+      </ul>
+    </nav>
+
     <div class="wrap">
       <header class="content container"></header>
       <div class="container">
