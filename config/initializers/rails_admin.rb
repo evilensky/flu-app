@@ -126,6 +126,7 @@ RailsAdmin.config do |config|
       field :email
       field :created_at
       field :is_admin
+      field :participant_id
     end
 
     show do

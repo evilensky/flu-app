@@ -10,11 +10,18 @@ class User < ActiveRecord::Base
   has_one :currently_ill_consent, dependent: :destroy
   has_one :previously_ill_consent, dependent: :destroy
 
-  def self.create_with_random_password(attrs)
+  ID_PREFIX = { 'PreviouslyIll' => 'FPI', 'CurrentlyIll' => 'FCI' }
+
+  def self.create_with_random_password(type, attrs)
     require 'securerandom'
     password = SecureRandom.hex
 
-    create attrs.merge(password: password, password_confirmation: password)
+    participant_id = generate_random_id(type)
+    while !User.find_by_participant_id(participant_id).nil?
+      participant_id = generate_random_id(type)
+    end
+
+    create attrs.merge(password: password, password_confirmation: password, participant_id: participant_id)
   end
 
   def day_of_study
@@ -23,5 +30,11 @@ class User < ActiveRecord::Base
     if membership && membership.symptoms_started_on
       Date.today - membership.symptoms_started_on + 1
     end
+  end
+
+  private
+
+  def self.generate_random_id(type)
+    ID_PREFIX[type] + rand(10000).to_s.rjust(4, '0')
   end
 end

@@ -6,7 +6,7 @@ class PreviouslyIllConsentsController < ApplicationController
   def create
     @consent = PreviouslyIllConsent.new params.require(:previously_ill_consent).permit(:may_save_info, :may_not_save_info, :may_be_contacted, :may_not_be_contacted, :has_read_consent, :first_name, :last_name, :date_of_birth, :email)
 
-    if @consent.save && User.create_with_random_password(email: @consent.email)
+    if @consent.save && User.create_with_random_password('PreviouslyIll', { email: @consent.email })
       user = User.find_by_email(@consent.email)
       @consent.update_column :user_id, user.id
       PreviouslyIllMembership.create user: user, consented_on: Date.today
