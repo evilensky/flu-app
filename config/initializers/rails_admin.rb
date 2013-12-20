@@ -48,6 +48,21 @@ RailsAdmin.config do |config|
         label 'Appointment date'
       end
     end
+
+    export do
+      field :participant_id do
+        label 'Id'
+      end
+      field :participant_full_name do
+        label 'Name'
+      end
+      field :participant_date_of_birth do
+        label 'DOB'
+      end
+      field :date do
+        label 'Appointment date'
+      end
+    end
   end
 
   config.model 'Consent' do
