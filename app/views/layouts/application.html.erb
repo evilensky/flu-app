@@ -20,26 +20,7 @@
     <div class="logo">
       <h4><%= link_to 'Fluomics', root_url %></h4>
     </div>
-
-    <nav id="sidebar" class="sidebar nav-collapse collapse" role="navigation">
-      <ul id="side-nav" class="side-nav">
-        <li class="<%= current_page?(root_path) ? 'active' : 'panel' %>">
-          <%= link_to root_path do %>
-            <span class="name">Home</span>
-          <% end %>
-        </li>
-        <li class="<%= current_page?(links_path) ? 'active' : 'panel' %>">
-          <%= link_to links_path do %>
-            <span class="name">Links</span>
-          <% end %>
-        </li>
-        <li class="<%= current_page?(about_us_path) ? 'active' : 'panel' %>">
-          <%= link_to about_us_path do %>
-            <span class="name">About Us</span>
-          <% end %>
-        </li>
-      </ul>
-    </nav>
+    <%= image_tag 'NU_Logo.png', class: 'pull-right' %>
 
     <div class="wrap">
       <header class="page-header">
@@ -61,12 +42,6 @@
             <% end %>
 
             <%= yield %>
-          </div>
-          <div class="col-md-3 offset-2">
-            <%= image_tag 'NU_Logo.png' %>
-            <%= link_to image_url('flu.png') do %>
-              <%= image_tag('flu-thumb.png') %>
-            <% end %>
           </div>
         </div><!--/row-->
 

@@ -1,21 +1,12 @@
-<h2>What is Fluomics?</h2>
-
-<p>MULTISCALE ANALYSIS OF INFLUENZA HOST-PATHOGEN INTERACTIONS (FLUOMICS) is a National Institute of Allergy and Infectious Diseases - funded genetics study of the influenza A virus-host interaction. Your medical information and blood sample will help us determine how your genes determine your capacity to fight the influenza A virus and which parts of the immune system is important in the disease. Through this research study, we hope to find new ways to prevent or treat this often serious, respiratory virus infection. Click here <%= link_to 'http://www.fluomics.org/', 'http://www.fluomics.org/' %> for more details.</p>
-
-<hr>
-<h2>Learn more and enroll</h2>
-
-<div class="row">
-  <section class="widget">
-    <%= link_to 'I am currently in a doctor’s office or in the hospital and my doctor is testing me for a respiratory infection', new_currently_ill_consent_path %>
-  </section>
+<div class="span12">
+  <%= image_tag 'flu.png', class: 'span6 pull-right' %>
+  <p><%= link_to 'Learn more and enroll', enroll_path, class: 'btn btn-primary btn-large' %>
+  <p><%= link_to 'What is Fluomics?', what_path, class: 'btn btn-large' %>
+  <p><%= link_to 'NU Fluomics team', about_us_path, class: 'btn btn-large' %>
 </div>
 
 <div class="row">
-  <section class="widget">
-    <%= link_to 'I received a letter inviting me to participate in a Flu study because I had a test that was positive for Influenza A virus within the past 10 years', new_previously_ill_consent_path %>
-  </section>
+  <div class="span12">
+    <h4>Questions? call 312.503.FLUA (3582)</h4>
+  </div>
 </div>
-
-<hr>
-<h3>Questions? call 312.503.FLUA (3582)</h3>
