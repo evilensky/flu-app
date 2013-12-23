@@ -7,7 +7,4 @@ Please follow the link to complete your daily flu symptoms checklist.  It should
 Today is the last day of tracking your flu symptoms!  Thank you so much for your participation.
 <% end %>
 
-<% @surveys.each do |survey| %>
-Complete your <%= survey.title %> Survey here: <%= survey_url(survey, survey_token: SurveyRules.new(survey.id, @user.id).make_token, user_id: @user.id) %>
-
-<% end %>
+Complete your <%= @surveys.first.title %> Survey here: <%= survey_url(@surveys.first, survey_token: SurveyRules.new(@surveys.first.id, @user.id).make_token, user_id: @user.id) %>

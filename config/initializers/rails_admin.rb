@@ -19,7 +19,7 @@ RailsAdmin.config do |config|
   # config.default_items_per_page = 20
 
   # Exclude specific models (keep the others):
-  # config.excluded_models = ['Question', 'Response', 'Survey', 'SurveySubmission', 'User']
+  config.excluded_models = ['Question', 'Response', 'Survey', 'SurveyCompletionMessage', 'SurveySubmission', 'SymptomsStartedOnSource']
 
   # Include specific models (exclude the others):
   # config.included_models = ['Question', 'Response', 'Survey', 'SurveySubmission', 'User']
@@ -73,6 +73,58 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model 'CurrentlyIllConsent' do
+    list do
+      current_consent_fields
+    end
+
+    export do
+      current_consent_fields
+    end
+
+    show do
+      current_consent_fields
+    end
+  end
+
+  def current_consent_fields
+    field :first_name
+    field :last_name
+    field :date_of_birth
+    field :email
+    field :may_save_info
+    field :may_not_save_info
+    field :may_be_contacted
+    field :may_not_be_contacted
+    field :has_read_consent
+  end
+
+  config.model 'PreviouslyIllConsent' do
+    list do
+      previous_consent_fields
+    end
+
+    export do
+      previous_consent_fields
+    end
+
+    show do
+      previous_consent_fields
+    end
+  end
+
+  def previous_consent_fields
+    field :first_name
+    field :last_name
+    field :date_of_birth
+    field :email
+    field :may_save_info
+    field :may_not_save_info
+    field :may_be_contacted
+    field :may_not_be_contacted
+    field :has_read_consent
+  end
+
   config.model 'CurrentlyIllMembership' do
     list do
       field :user
@@ -90,172 +142,6 @@ RailsAdmin.config do |config|
       field :consented_on
       field :enrolled_on
       field :symptoms_started_on
-    end
-  end
-
-  config.model 'Question' do
-    list do
-      field :survey
-      field :data_label
-      field :content
-      field :responses
-    end
-  end
-
-  config.model 'Response' do
-    list do
-      field :question
-      field :label
-      field :value
-    end
-  end
-
-  config.model 'Survey' do
-    list do
-      field :title
-      field :questions
-      field :responses
-      field :survey_submissions
-    end
-  end
-
-  config.model 'SurveySubmission' do
-    show do
-      field :user
-      field :survey
-      field :response_data do
-        pretty_value do
-          value.map {|k, v| "#{ k }: #{ v }" }.join ', '
-        end
-      end
-      field :created_at
-    end
-
-    list do
-      field :user
-      field :survey
-      field :response_data do
-        pretty_value do
-          value.map {|k, v| "#{ k }: #{ v }" }.join ', '
-        end
-      end
-      field :created_at
-    end
-  end
-
-  config.model 'BaselineSurveySubmission' do
-    list do
-      field :unique_identifier
-      field :age
-      field :gender
-      field :weight
-      field :height
-      field :date_flu
-      field :vaccine13
-      field :vaccine12
-      field :diabetes
-      field :copd
-      field :asthma
-      field :cancer
-      field :immune_compromise
-      field :transplant
-      field :heart_f
-      field :kidney_f
-      field :dialysis
-      field :neuro_muscular
-      field :cirrhosis
-    end
-
-    export do
-      field :unique_identifier
-      field :age
-      field :gender
-      field :weight
-      field :height
-      field :date_flu
-      field :vaccine13
-      field :vaccine12
-      field :diabetes
-      field :copd
-      field :asthma
-      field :cancer
-      field :immune_compromise
-      field :transplant
-      field :heart_f
-      field :kidney_f
-      field :dialysis
-      field :neuro_muscular
-      field :cirrhosis
-    end
-  end
-
-  config.model 'DailySurveySubmission' do
-    list do
-      field :unique_identifier
-      field :questionnaire_day
-      field :fever
-      field :chills
-      field :sore_throat
-      field :cough
-      field :difficulty_breathing
-      field :runny_nose_or_sinus_congestion
-      field :headache
-      field :muscle_aches
-      field :joint_aches
-      field :chest_pain
-      field :abdominal_pain
-      field :diarrhea
-      field :taking_tamiflu
-      field :taking_antibiotics
-    end
-
-    export do
-      field :unique_identifier
-      field :questionnaire_day
-      field :fever
-      field :chills
-      field :sore_throat
-      field :cough
-      field :difficulty_breathing
-      field :runny_nose_or_sinus_congestion
-      field :headache
-      field :muscle_aches
-      field :joint_aches
-      field :chest_pain
-      field :abdominal_pain
-      field :diarrhea
-      field :taking_tamiflu
-      field :taking_antibiotics
-    end
-  end
-
-  config.model 'DayFourteenSurveySubmission' do
-    list do
-      field :unique_identifier
-      field :hospitalized
-      field :icu
-      field :mech_vent
-      field :tamiflu
-      field :tamiflu_date1
-      field :tamiflu_date2
-      field :pneumonia
-      field :bronchitis
-      field :sinusitis
-      field :otitis
-    end
-
-    export do
-      field :unique_identifier
-      field :hospitalized
-      field :icu
-      field :mech_vent
-      field :tamiflu
-      field :tamiflu_date1
-      field :tamiflu_date2
-      field :pneumonia
-      field :bronchitis
-      field :sinusitis
-      field :otitis
     end
   end
 
@@ -290,6 +176,159 @@ RailsAdmin.config do |config|
       field :currently_ill_membership
       field :previously_ill_membership
       field :blood_draw_appointment
+    end
+  end
+
+  config.model 'SurveyDataSet' do
+    list do
+      survey_data_set_list_fields
+    end
+
+    export do
+      survey_data_set_list_fields
+    end
+  end
+
+  def survey_data_set_list_fields
+    field :participant_id do
+      label 'id'
+    end
+    field :datebirt do
+      label 'datebirt'
+    end
+    field :fludx do
+      label 'fludx'
+    end
+    field :gender do
+      label 'gender'
+    end
+    field :weight do
+      label 'weight'
+    end
+    field :height do
+      label 'height'
+    end
+    field :flusym do
+      label 'flusym'
+    end
+    field :vaccine13 do
+      label 'vaccine13'
+    end
+    field :vaccine12 do
+      label 'vaccine12'
+    end
+    field :diab do
+      label 'diab'
+    end
+    field :copd do
+      label 'copd'
+    end
+    field :asthma do
+      label 'asthma'
+    end
+    field :canc do
+      label 'canc'
+    end
+    field :imco do
+      label 'imco'
+    end
+    field :tran do
+      label 'tran'
+    end
+    field :hrtf do
+      label 'hrtf'
+    end
+    field :kidf do
+      label 'kidf'
+    end
+    field :dial do
+      label 'dial'
+    end
+    field :nemu do
+      label 'nemu'
+    end
+    field :cirr do
+      label 'cirr'
+    end
+    field :hosp do
+      label 'hosp'
+    end
+    field :icu do
+      label 'icu'
+    end
+    field :vent do
+      label 'vent'
+    end
+    field :osel do
+      label 'osel'
+    end
+    field :osel_d1 do
+      label 'osel_d1'
+    end
+    field :osel_d2 do
+      label 'osel_d2'
+    end
+    field :pneu do
+      label 'pneu'
+    end
+    field :bron do
+      label 'bron'
+    end
+    field :sinu do
+      label 'sinu'
+    end
+    field :otit do
+      label 'otit'
+    end
+    (1..14).each do |i|
+      field "qday_#{ i }" do
+        label "qday_#{ i }"
+      end
+      field "rday_#{ i }" do
+        label "rday_#{ i }"
+      end
+      field "fevr_#{ i }" do
+        label "fevr_#{ i }"
+      end
+      field "chls_#{ i }" do
+        label "chls_#{ i }"
+      end
+      field "sthr_#{ i }" do
+        label "sthr_#{ i }"
+      end
+      field "coug_#{ i }" do
+        label "coug_#{ i }"
+      end
+      field "dysp_#{ i }" do
+        label "dysp_#{ i }"
+      end
+      field "cong_#{ i }" do
+        label "cong_#{ i }"
+      end
+      field "head_#{ i }" do
+        label "head_#{ i }"
+      end
+      field "myal_#{ i }" do
+        label "myal_#{ i }"
+      end
+      field "arth_#{ i }" do
+        label "arth_#{ i }"
+      end
+      field "chpa_#{ i }" do
+        label "chpa_#{ i }"
+      end
+      field "abpa_#{ i }" do
+        label "abpa_#{ i }"
+      end
+      field "dirh_#{ i }" do
+        label "dirh_#{ i }"
+      end
+      field "oslt_#{ i }" do
+        label "oslt_#{ i }"
+      end
+      field "atbx_#{ i }" do
+        label "atbx_#{ i }"
+      end
     end
   end
 end

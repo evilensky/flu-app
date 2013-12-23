@@ -46,9 +46,7 @@
                                 Today is the last day of tracking your flu symptoms!  Thank you so much for your participation.
                               <% end %>
                             </p>
-                            <% @surveys.each do |survey| %>
-                              <p><%= link_to "Complete your #{ survey.title } Survey", survey_url(survey, survey_token: SurveyRules.new(survey.id, @user.id).make_token, user_id: @user.id) %></p>
-                            <% end %>
+                            <p><%= link_to "Complete your #{ @surveys.first.title } Survey", survey_url(@surveys.first, survey_token: SurveyRules.new(@surveys.first.id, @user.id).make_token, user_id: @user.id) %></p>
                           </td>
                           <td class="expander"></td>
                         </tr>
