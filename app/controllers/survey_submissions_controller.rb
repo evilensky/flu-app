@@ -5,7 +5,22 @@ class SurveySubmissionsController < ApplicationController
     @survey_submission = SurveySubmission.new survey_params
 
     if @survey_submission.save
-      render :success
+      user = @survey_submission.user
+      surveys_today = Survey.to_complete_on_day(user.day_of_study).map(&:id)
+      surveys_completed = user.survey_submissions.where("DATE(survey_submissions.created_at) = ?", Date.today).map(&:survey_id)
+      outstanding_survey = (surveys_today - surveys_completed).first
+
+      if outstanding_survey
+        survey = Survey.find(outstanding_survey)
+        flash[:notice] = if @survey_submission.survey.survey_completion_message
+          @survey_submission.survey.survey_completion_message.success_body
+        else
+          'Thank you for responding to the survey'
+        end
+        redirect_to survey_url(survey, survey_token: SurveyRules.new(outstanding_survey, user.id).make_token, user_id: user.id)
+      else
+        render :success
+      end
     end
   end
 
