@@ -1,4 +1,4 @@
-<%= form_for @survey, url: survey_submissions_path, method: :post, html: { class: 'form-horizontal label-left' } do |f| %>
+<%= form_for @survey, url: survey_submissions_path, method: :post, html: { class: 'form-horizontal', role: 'form' } do |f| %>
   <%= hidden_field_tag 'survey[survey_id]', @survey.id %>
   <%= hidden_field_tag 'survey[user_id]', @user.id %>
   <%= hidden_field_tag 'survey[token]', @survey_token %>
@@ -7,33 +7,33 @@
       <%= f.fields_for :questions, q do |q_fields| %>
         <% case q.input_type %>
         <% when 'string' %>
-          <div class="control-group">
-            <label class="control-label"><%= q.content %></label>
-            <div class="controls form-group">
+          <div class="form-group">
+            <label class="col-sm-2 control-label"><%= q.content %></label>
+            <div class="col-sm-10">
               <%= text_field_tag "survey[response_data][#{ q.data_label }]", nil, class: 'col-sm-6 col-xs-12' %>
             </div>
           </div>
         <% when 'date' %>
-          <div class="control-group">
-            <label class="control-label"><%= q.content %></label>
-            <div class="controls form-group">
+          <div class="form-group">
+            <label class="col-sm-2 control-label"><%= q.content %></label>
+            <div class="col-sm-10">
               <%= text_field_tag "survey[response_data][#{ q.data_label }]", nil, class: 'col-sm-6 col-xs-12 datepicker' %>
             </div>
           </div>
         <% when 'integer' %>
-          <div class="control-group">
-            <label class="control-label"><%= q.content %></label>
-            <div class="controls form-group">
+          <div class="form-group">
+            <label class="col-sm-2 control-label"><%= q.content %></label>
+            <div class="col-sm-10">
               <%= number_field_tag "survey[response_data][#{ q.data_label }]", nil, class: 'col-sm-6 col-xs-12' %>
             </div>
           </div>
         <% when 'check_boxes' %>
-          <div class="control-group">
-            <label class="control-label"><%= q.content %></label>
-            <div class="controls form-group">
-              <div class="btn-group btn-group-vertical col-sm-12" data-toggle="buttons-checkbox">
+          <div class="form-group">
+            <label class="col-sm-2 control-label"><%= q.content %></label>
+            <div class="col-sm-10">
+              <div class="btn-group btn-group-vertical col-sm-6" data-toggle="buttons-checkbox">
               <% q.responses.each do |response| %>
-                <label class="btn btn-transparent" data-toggle-class="btn-default" data-toggle-passive-class="btn-inverse">
+                <label class="btn btn-default" data-toggle-class="btn-default" data-toggle-passive-class="btn-inverse">
                   <%= check_box_tag "survey[response_data][#{ q.data_label }][]", response.id %>
                   <%= response.label %>
                 </label>
@@ -42,12 +42,12 @@
             </div>
           </div>
         <% when 'radio_buttons' %>
-          <div class="control-group">
-            <label class="control-label"><%= q.content %></label>
-            <div class="controls form-group">
-              <div class="btn-group btn-group-vertical col-sm-12" data-toggle="buttons-radio">
+          <div class="form-group">
+            <label class="col-sm-2 control-label"><%= q.content %></label>
+            <div class="col-sm-10">
+              <div class="btn-group btn-group-vertical col-sm-6" data-toggle="buttons-radio">
               <% q.responses.each do |response| %>
-                <label class="btn btn-transparent" data-toggle-class="btn-default" data-toggle-passive-class="btn-inverse">
+                <label class="btn btn-default" data-toggle-class="btn-default" data-toggle-passive-class="btn-inverse">
                   <%= radio_button_tag "survey[response_data][#{ q.data_label }]", response.id %>
                   <%= response.label %>
                 </label>

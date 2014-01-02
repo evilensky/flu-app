@@ -11,5 +11,19 @@
  *= require_self
  *= require picker-classic-3.3.0
  *= require picker-classic.date-3.3.0
- *= require_tree .
+ *= require bootstrap.min
+ * require_tree .
  */
+
+.btn-group-vertical > .btn {
+  text-align: left;
+}
+
+.btn-group-vertical > .btn+.btn {
+  margin-top: 5px;
+  white-space: normal;
+}
+
+[data-toggle="buttons"]>.btn>input[type="radio"], [data-toggle="buttons"]>.btn>input[type="checkbox"] {
+  display: inline !important;
+}

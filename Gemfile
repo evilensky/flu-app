@@ -6,9 +6,6 @@ gem 'rails', '~> 4'
 # Use postgresql as the database for Active Record
 gem 'pg'
 
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
-
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
@@ -22,24 +19,18 @@ gem 'jquery-rails'
 gem 'capistrano', group: :development
 gem 'rvm-capistrano'
 
-# Use debugger
-gem 'debugger', group: [:development, :test]
-
 # authentication
 gem 'devise'
-# styles
-gem 'twitter-bootstrap-rails'
 # scheduling
 gem 'whenever', require: false
 # admin
 gem 'rails_admin'
 
-gem 'json', '1.8.0'
 # email preview
 gem 'mail_view', '~> 1.0.3'
 # pdf generation
 gem 'prawn'
 
 group :development, :test do
-  gem 'debugger'
+  #gem 'debugger'
 end

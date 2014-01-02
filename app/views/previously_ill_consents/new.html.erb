@@ -1,105 +1,109 @@
-<h3 class="text text-warning">please read this document and scroll to the bottom of the page to indicate your consent</h3>
+<div class="row">
+  <div class="col-md-6">
+    <h3 class="text text-warning">please read this document and scroll to the bottom of the page to indicate your consent</h3>
 
-<h1>Online Consent Form and Authorization for Research</h1>
+    <h1>Online Consent Form and Authorization for Research</h1>
 
-<%= render 'consent' %>
+    <%= render 'consent' %>
 
-<section class="widget">
+    <section class="widget">
 
 
-<h4>Options</h4>
-You do not have to agree to participate in the optional choices below in order to participate in the main study.
+    <h4>Options</h4>
+    You do not have to agree to participate in the optional choices below in order to participate in the main study.
 
-  <div class="body">
-    <%= form_for @consent, html: { class: 'form-horizontal' } do |f| %>
-      <fieldset>
-        <legend class="section">1. Please initial one of the following to indicate your choice:</legend>
-        <div class="control-group">
-          <%= label :consent, :may_save_info, 'I agree to have my de-identified information placed in a repository for any future research or shared with other researchers.' %>
-          <div class="controls form-group">
-            <div class="col-sm-2">
-              <%= f.text_field :may_save_info, class: 'form-control' %>
+      <div class="body">
+        <%= form_for @consent, html: { class: 'form-horizontal' } do |f| %>
+          <fieldset>
+            <legend class="section">1. Please initial one of the following to indicate your choice:</legend>
+            <div class="form-group">
+              <%= label :consent, :may_save_info, 'I agree to have my de-identified information placed in a repository for any future research or shared with other researchers.' %>
+              <div class="controls form-group">
+                <div class="col-sm-2">
+                  <%= f.text_field :may_save_info, class: 'form-control' %>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div class="control-group">
-          <%= label :consent, :may_save_info, 'I do not agree to have my de-identified information placed in a repository for any future research or shared with other researchers.' %>
-          <div class="controls form-group">
-            <div class="col-sm-2">
-              <%= f.text_field :may_not_save_info, class: 'form-control' %>
+            <div class="form-group">
+              <%= label :consent, :may_save_info, 'I do not agree to have my de-identified information placed in a repository for any future research or shared with other researchers.' %>
+              <div class="controls form-group">
+                <div class="col-sm-2">
+                  <%= f.text_field :may_not_save_info, class: 'form-control' %>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </fieldset>
+          </fieldset>
 
-      <fieldset>
-        <legend class="section">2. Please initial one of the following to indicate your choice:</legend>
-        <div class="control-group">
-          <%= label :consent, :may_be_contacted, 'I agree that someone from the research program may contact me about offers to take part in more research.' %>
-          <div class="controls form-group">
-            <div class="col-sm-2">
-              <%= f.text_field :may_be_contacted, class: 'form-control' %>
+          <fieldset>
+            <legend class="section">2. Please initial one of the following to indicate your choice:</legend>
+            <div class="form-group">
+              <%= label :consent, :may_be_contacted, 'I agree that someone from the research program may contact me about offers to take part in more research.' %>
+              <div class="controls form-group">
+                <div class="col-sm-2">
+                  <%= f.text_field :may_be_contacted, class: 'form-control' %>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div class="control-group">
-          <%= label :consent, :may_not_be_contacted, 'I do not agree that someone from the research program may contact me about offers to take part in more research.' %>
-          <div class="controls form-group">
-            <div class="col-sm-2">
-              <%= f.text_field :may_not_be_contacted, class: 'form-control' %>
+            <div class="form-group">
+              <%= label :consent, :may_not_be_contacted, 'I do not agree that someone from the research program may contact me about offers to take part in more research.' %>
+              <div class="controls form-group">
+                <div class="col-sm-2">
+                  <%= f.text_field :may_not_be_contacted, class: 'form-control' %>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </fieldset>
+          </fieldset>
 
-      <fieldset>
-        <legend class="section">Consent Summary</legend>
-        <div class="control-group">
-          <%= label :consent, :has_read_consent, 'I have read this consent form and the research study has been explained to me. I have been given time to ask questions, and have been told whom to contact if I have more questions.  I agree to be in the research study described above and this is signified by checking the box below and typing my name in the space provided. I will print a copy of this consent form for my records after I complete this authorization. (A copy of the consent will be sent to your email)' %>
-          <div class="controls form-group">
-            <label class="checkbox">
-              <%= f.check_box :has_read_consent %>
-              I have read this consent
-            </label>
-          </div>
-          <div class="controls form-group">
-            <div class="col-sm-4">
-              <%= f.text_field :first_name, class: 'form-control', placeholder: 'First name' %>
+          <fieldset>
+            <legend class="section">Consent Summary</legend>
+            <div class="form-group">
+              <%= label :consent, :has_read_consent, 'I have read this consent form and the research study has been explained to me. I have been given time to ask questions, and have been told whom to contact if I have more questions.  I agree to be in the research study described above and this is signified by checking the box below and typing my name in the space provided. I will print a copy of this consent form for my records after I complete this authorization. (A copy of the consent will be sent to your email)' %>
+              <div class="btn-group" data-toggle="buttons">
+                <label class="btn btn-primary">
+                  <%= f.check_box :has_read_consent %>
+                  I have read this consent
+                </label>
+              </div>
+              <div class="controls form-group">
+                <div class="col-sm-4">
+                  <%= f.text_field :first_name, class: 'form-control', placeholder: 'First name' %>
+                </div>
+                <div class="col-sm-4">
+                  <%= f.text_field :last_name, class: 'form-control', placeholder: 'Last name' %>
+                </div>
+              </div>
             </div>
-            <div class="col-sm-4">
-              <%= f.text_field :last_name, class: 'form-control', placeholder: 'Last name' %>
-            </div>
-          </div>
-        </div>
-        If you do not wish to participate in this study, please select the Decline button, and your session will end. 
-      </fieldset>
+            If you do not wish to participate in this study, please select the Decline button, and your session will end. 
+          </fieldset>
 
-      <fieldset>
-        <legend class="section">Additional Information</legend>
-        <div class="control-group">
-          <%= label :consent, :date_of_birth, class: 'control-label' %>
-          <div class="controls form-group">
-            <div class="col-sm-8">
-              <%= f.date_select :date_of_birth, class: 'form-control', end_year: Time.now.year, start_year: 1900 %>
+          <fieldset>
+            <legend class="section">Additional Information</legend>
+            <div class="form-group">
+              <%= label :consent, :date_of_birth, class: 'control-label' %>
+              <div class="controls form-group">
+                <div class="col-sm-8">
+                  <%= f.date_select :date_of_birth, class: 'form-control', end_year: Time.now.year, start_year: 1900 %>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div class="control-group">
-          <%= label :consent, :email, class: 'control-label' %>
-          <div class="controls form-group">
-            <div class="col-sm-8">
-              <%= f.email_field :email, class: 'form-control' %>
+            <div class="form-group">
+              <%= label :consent, :email, class: 'control-label' %>
+              <div class="controls form-group">
+                <div class="col-sm-8">
+                  <%= f.email_field :email, class: 'form-control' %>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
 
-        <div class="form-actions">
-          <div>
-            <%= f.button 'Submit Consent', type: 'submit', class: 'btn btn-primary' %>
-            <%= link_to 'Decline', root_url, class: 'btn btn-default' %>
-          </div>
-        </div>
-      </fieldset>
-    <% end %>
+            <div class="form-actions">
+              <div>
+                <%= f.button 'Submit Consent', type: 'submit', class: 'btn btn-primary' %>
+                <%= link_to 'Decline', root_url, class: 'btn btn-default' %>
+              </div>
+            </div>
+          </fieldset>
+        <% end %>
+      </div>
+    </section>
   </div>
-</section>
+</div>

@@ -1,12 +1,16 @@
-<div class="span12">
-  <%= image_tag 'flu.png', class: 'span6 pull-right' %>
-  <p><%= link_to 'Learn more and enroll', enroll_path, class: 'btn btn-primary btn-large' %>
-  <p><%= link_to 'What is Fluomics?', what_path, class: 'btn btn-large' %>
-  <p><%= link_to 'NU Fluomics team', about_us_path, class: 'btn btn-large' %>
+<div class="row">
+  <div class="col-md-6">
+    <p><%= link_to 'Learn more and enroll', enroll_path, class: 'btn btn-primary btn-large' %>
+    <p><%= link_to 'What is Fluomics?', what_path, class: 'btn btn-default btn-large' %>
+    <p><%= link_to 'NU Fluomics team', about_us_path, class: 'btn btn-default btn-large' %>
+  </div>
+  <div class="col-md-6">
+    <%= image_tag 'flu.png' %>
+  </div>
 </div>
 
 <div class="row">
   <div class="span12">
-    <h4>Questions? call 312.503.FLUA (3582)</h4>
+    <h4>Questions? call <%= link_to '312.503.FLUA (3582)', 'tel:3125033582' %></h4>
   </div>
 </div>

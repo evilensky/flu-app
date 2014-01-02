@@ -1,8 +1,16 @@
-<div class="span6">
-  <h2>Learn more and enroll</h2>
+<div class="row">
+  <div class="col-md-6">
+    <h2>Learn more and enroll</h2>
 
-  <ul>
-    <li><%= link_to 'I am currently in a doctor’s office or in the hospital and my doctor is testing me for a respiratory infection', new_currently_ill_consent_path %></li>
-    <li><%= link_to 'I received a letter inviting me to participate in a Flu study because I had a test that was positive for Influenza A virus within the past 10 years', new_previously_ill_consent_path %></li>
-  </ul>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <%= link_to 'I am currently in a doctor’s office or in the hospital and my doctor is testing me for a respiratory infection', new_currently_ill_consent_path %>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <%= link_to 'I received a letter inviting me to participate in a Flu study because I had a test that was positive for Influenza A virus within the past 10 years', new_previously_ill_consent_path %>
+      </div>
+    </div>
+  </div>
 </div>

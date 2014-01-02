@@ -12,10 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap/transition
-//= require bootstrap/collapse
 //= require picker-3.3.0.min
 //= require picker.date-3.3.0.min
 //= require_tree .
 
+// enable fastclick
 $(function() { FastClick.attach(document.body); });
