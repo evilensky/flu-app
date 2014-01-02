@@ -3,28 +3,28 @@ class ParticipantMailer < ActionMailer::Base
 
   def negative_flu_test_email(user)
     mail to: user.email,
-         subject: 'Fluomics: Status'
+         subject: 'Flu-Omics: Status'
   end
 
   def positive_flu_test_email(user, surveys)
     @user = user
     @surveys = surveys
     mail to: @user.email,
-         subject: 'Fluomics: Status'
+         subject: 'Flu-Omics: Status'
   end
 
   def baseline_survey_email(user)
     @user = user
     @survey = Survey.find_by_title 'Baseline'
     mail to: @user.email,
-         subject: 'Fluomics: Baseline Survey'
+         subject: 'Flu-Omics: Baseline Survey'
   end
 
   def daily_survey_email(user, surveys)
     @user = user
     @surveys = surveys
     mail to: @user.email,
-         subject: 'Fluomics: Daily Survey'
+         subject: 'Flu-Omics: Daily Survey'
   end
 
   def blood_draw_appointment_email(user)
@@ -40,6 +40,6 @@ class ParticipantMailer < ActionMailer::Base
     attachments['consent.pdf'] = File.read(path)
     @user = user
     mail to: @user.email,
-         subject: 'Fluomics: Blood draw appointment'
+         subject: 'Flu-Omics: Blood draw appointment'
   end
 end
