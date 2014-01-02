@@ -15,6 +15,10 @@
  * require_tree .
  */
 
+.form-group .btn-group-vertical {
+  padding-left: 0;
+}
+
 .btn-group-vertical > .btn {
   text-align: left;
 }
