@@ -231,6 +231,7 @@ DEPENDENCIES
   prawn
   rails (~> 4)
   rails_admin
+  rake
   rspec-rails (~> 2.14)
   rvm-capistrano
   uglifier (>= 1.3.0)
