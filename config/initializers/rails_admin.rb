@@ -358,5 +358,6 @@ RailsAdmin.config do |config|
     field :label
     field :value
     field :question
+    field :position
   end
 end
