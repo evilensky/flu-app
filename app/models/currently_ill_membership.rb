@@ -3,6 +3,8 @@ class CurrentlyIllMembership < ActiveRecord::Base
 
   after_commit :notify_of_flu_test_results
 
+  delegate :participant_id, to: :user, prefix: false, allow_nil: true
+
   def notify_of_flu_test_results
     if tested_positive_on_changed? && !tested_positive_on.nil?
       surveys = Survey.to_complete_on_day user.day_of_study
