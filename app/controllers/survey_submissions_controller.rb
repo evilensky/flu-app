@@ -13,7 +13,7 @@ class SurveySubmissionsController < ApplicationController
       if outstanding_survey
         survey = Survey.find(outstanding_survey)
         flash[:notice] = if @survey_submission.survey.survey_completion_message
-          @survey_submission.survey.survey_completion_message.success_body
+          @survey_submission.survey.survey_completion_message.success_body.html_safe
         else
           'Thank you for responding to the survey'
         end
