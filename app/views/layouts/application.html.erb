@@ -16,27 +16,35 @@
     <![endif]-->
   </head>
   <body>
-    <!-- Static navbar -->
-    <div class="navbar navbar-default navbar-static-top" role="navigation">
-      <div class="navbar-header">
-        <%= link_to 'Flu-Omics', root_url, class: 'navbar-brand' %>
-      </div>
-      <div class="navbar-collapse collapse">
-        <%= image_tag 'NU_Logo.png', class: 'pull-right' %>
-      </div><!--/.nav-collapse -->
-    </div>
-
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <% flash.each do |type, message| %>
-            <div class="alert alert-<%= type %>"><%= message %></div>
-          <% end %>
-
-          <%= yield %>
+    <div id="wrap">
+      <!-- Static navbar -->
+      <div class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-header">
+          <%= link_to 'Flu-Omics', root_url, class: 'navbar-brand' %>
         </div>
-      </div><!--/row-->
-    </div> <!-- /container -->
+        <div class="navbar-collapse collapse">
+          <%= image_tag 'NU_Logo.png', class: 'pull-right' %>
+        </div><!--/.nav-collapse -->
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <% flash.each do |type, message| %>
+              <div class="alert alert-<%= type %>"><%= message %></div>
+            <% end %>
+
+            <%= yield %>
+          </div>
+        </div> <!-- /row -->
+      </div> <!-- /container -->
+    </div> <!-- /wrap -->
+
+    <div id="footer">
+      <div class="container">
+        <h4>Questions? call <%= link_to '312.503.FLUA (3582)', 'tel:3125033582' %>, or email <%= mail_to 'fluomics@northwestern.edu' %></h4>
+      </div>
+    </div>
 
     <%= javascript_include_tag "application" %>
   </body>

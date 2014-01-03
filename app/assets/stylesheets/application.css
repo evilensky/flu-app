@@ -12,8 +12,11 @@
  *= require picker-classic-3.3.0
  *= require picker-classic.date-3.3.0
  *= require bootstrap.min
- * require_tree .
  */
+
+form .btn {
+  margin-bottom: 10px;
+}
 
 .form-group .btn-group-vertical {
   padding-left: 0;
@@ -30,4 +33,29 @@
 
 [data-toggle="buttons"]>.btn>input[type="radio"], [data-toggle="buttons"]>.btn>input[type="checkbox"] {
   display: inline !important;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+
+html,
+body {
+  height: 100%;
+  /* The html and body elements cannot have any padding or margin. */
+}
+
+/* Wrapper for page content to push down footer */
+#wrap {
+  min-height: 100%;
+  height: auto;
+  /* Negative indent footer by its height */
+  margin: 0 auto -60px;
+  /* Pad bottom by footer height */
+  padding: 0 0 60px;
+}
+
+/* Set the fixed height of the footer here */
+#footer {
+  height: 60px;
+  background-color: #f5f5f5;
 }
