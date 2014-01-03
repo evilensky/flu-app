@@ -73,9 +73,8 @@ RailsAdmin.config do |config|
     navigation_label nav_label
 
     list do
-      field :user
       field :type
-      field :created_at
+      consent_fields
     end
   end
 
@@ -83,56 +82,56 @@ RailsAdmin.config do |config|
     navigation_label nav_label
 
     list do
-      current_consent_fields
+      consent_fields
     end
 
     export do
-      current_consent_fields
+      consent_fields
     end
 
     show do
-      current_consent_fields
+      consent_fields
     end
-  end
-
-  def current_consent_fields
-    field :first_name
-    field :last_name
-    field :date_of_birth
-    field :email
-    field :may_save_info
-    field :may_not_save_info
-    field :may_be_contacted
-    field :may_not_be_contacted
-    field :has_read_consent
   end
 
   config.model 'PreviouslyIllConsent' do
     navigation_label nav_label
 
     list do
-      previous_consent_fields
+      consent_fields
     end
 
     export do
-      previous_consent_fields
+      consent_fields
     end
 
     show do
-      previous_consent_fields
+      consent_fields
     end
   end
 
-  def previous_consent_fields
-    field :first_name
-    field :last_name
+  def consent_fields
+    participant_id_field
+    participant_full_name_field
     field :date_of_birth
     field :email
     field :may_save_info
     field :may_not_save_info
     field :may_be_contacted
     field :may_not_be_contacted
-    field :has_read_consent
+    field :enrolled_on
+  end
+
+  def participant_id_field
+    field :participant_id do
+      label 'ID'
+    end
+  end
+
+  def participant_full_name_field
+    field :participant_full_name do
+      label 'Full name'
+    end
   end
 
   config.model 'CurrentlyIllMembership' do

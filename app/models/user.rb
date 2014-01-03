@@ -42,6 +42,11 @@ class User < ActiveRecord::Base
     (surveys_today - surveys_completed).first
   end
 
+  def enrolled_on
+    currently_ill_membership.try(:enrolled_on) ||
+      previously_ill_membership.try(:enrolled_on)
+  end
+
   private
 
   def self.generate_random_id(type)
