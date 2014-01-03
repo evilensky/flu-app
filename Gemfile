@@ -21,18 +21,26 @@ gem 'rvm-capistrano'
 
 # authentication
 gem 'devise'
-# scheduling
-gem 'whenever', require: false
 # admin
 gem 'rails_admin'
 
 # email preview
-gem 'mail_view', '~> 1.0.3'
+group :development do
+  gem 'mail_view', '~> 1.0.3'
+end
+
 # pdf generation
 gem 'prawn'
-# email exceptions
-gem 'exception_notification'
+
+group :production do
+  # scheduling
+  gem 'whenever', require: false
+  # email exceptions
+  gem 'exception_notification'
+end
 
 group :development, :test do
   gem 'debugger'
+  gem 'rspec-rails', '~> 2.14'
+  gem 'capybara', '~> 2.0.0'
 end
