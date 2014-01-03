@@ -30,6 +30,8 @@ gem 'rails_admin'
 gem 'mail_view', '~> 1.0.3'
 # pdf generation
 gem 'prawn'
+# email exceptions
+gem 'exception_notification'
 
 group :development, :test do
   gem 'debugger'
