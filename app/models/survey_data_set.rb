@@ -2,7 +2,12 @@ class SurveyDataSet < User
   default_scope { joins(:currently_ill_membership).includes(:survey_submissions) }
 
   def datebirt
-    baseline 'Q1'
+    if baseline 'Q1'
+      begin
+        (Date.parse(baseline('Q1'))).to_s :compact
+      rescue
+      end
+    end
   end
 
   def fludx

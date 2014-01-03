@@ -19,7 +19,7 @@ RailsAdmin.config do |config|
   # config.default_items_per_page = 20
 
   # Exclude specific models (keep the others):
-  config.excluded_models = ['Question', 'Response', 'Survey', 'SurveyCompletionMessage', 'SurveySubmission', 'SymptomsStartedOnSource']
+  config.excluded_models = ['Response', 'Survey', 'SurveyCompletionMessage', 'SurveySubmission', 'SymptomsStartedOnSource']
 
   # Include specific models (exclude the others):
   # config.included_models = ['Question', 'Response', 'Survey', 'SurveySubmission', 'User']
@@ -33,7 +33,11 @@ RailsAdmin.config do |config|
 
   ################  Model configuration  ################
 
+  nav_label = 'trial management'
+
   config.model 'BloodDrawAppointment' do
+    navigation_label nav_label
+
     list do
       field :participant_id do
         label 'Id'
@@ -66,6 +70,8 @@ RailsAdmin.config do |config|
   end
 
   config.model 'Consent' do
+    navigation_label nav_label
+
     list do
       field :user
       field :type
@@ -74,6 +80,8 @@ RailsAdmin.config do |config|
   end
 
   config.model 'CurrentlyIllConsent' do
+    navigation_label nav_label
+
     list do
       current_consent_fields
     end
@@ -100,6 +108,8 @@ RailsAdmin.config do |config|
   end
 
   config.model 'PreviouslyIllConsent' do
+    navigation_label nav_label
+
     list do
       previous_consent_fields
     end
@@ -126,6 +136,8 @@ RailsAdmin.config do |config|
   end
 
   config.model 'CurrentlyIllMembership' do
+    navigation_label nav_label
+
     list do
       field :user
       field :consented_on
@@ -137,6 +149,8 @@ RailsAdmin.config do |config|
   end
 
   config.model 'PreviouslyIllMembership' do
+    navigation_label nav_label
+
     list do
       field :user
       field :consented_on
@@ -146,6 +160,8 @@ RailsAdmin.config do |config|
   end
 
   config.model 'User' do
+    navigation_label nav_label
+
     object_label_method :email
 
     list do
@@ -180,6 +196,8 @@ RailsAdmin.config do |config|
   end
 
   config.model 'SurveyDataSet' do
+    navigation_label nav_label
+
     list do
       survey_data_set_list_fields
     end
@@ -330,5 +348,13 @@ RailsAdmin.config do |config|
         label "atbx_#{ i }"
       end
     end
+  end
+
+  config.model 'Question' do 
+    navigation_label 'configuration'
+
+    field :data_label
+    field :content
+    field :input_type
   end
 end
