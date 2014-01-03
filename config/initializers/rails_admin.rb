@@ -19,7 +19,7 @@ RailsAdmin.config do |config|
   # config.default_items_per_page = 20
 
   # Exclude specific models (keep the others):
-  config.excluded_models = ['Response', 'Survey', 'SurveyCompletionMessage', 'SurveySubmission', 'SymptomsStartedOnSource']
+  config.excluded_models = ['Survey', 'SurveyCompletionMessage', 'SurveySubmission', 'SymptomsStartedOnSource']
 
   # Include specific models (exclude the others):
   # config.included_models = ['Question', 'Response', 'Survey', 'SurveySubmission', 'User']
@@ -241,9 +241,6 @@ RailsAdmin.config do |config|
     field :copd do
       label 'copd'
     end
-    field :asthma do
-      label 'asthma'
-    end
     field :canc do
       label 'canc'
     end
@@ -356,5 +353,13 @@ RailsAdmin.config do |config|
     field :data_label
     field :content
     field :input_type
+  end
+
+  config.model 'Response' do
+    navigation_label 'configuration'
+
+    field :label
+    field :value
+    field :question
   end
 end

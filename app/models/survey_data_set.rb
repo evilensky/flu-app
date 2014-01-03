@@ -58,10 +58,6 @@ class SurveyDataSet < User
     b baseline_q9.include?('10')
   end
 
-  def asthma
-    b baseline_q9.include?('11')
-  end
-
   def canc
     b baseline_q9.include?('12')
   end
