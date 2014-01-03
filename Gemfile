@@ -32,5 +32,5 @@ gem 'mail_view', '~> 1.0.3'
 gem 'prawn'
 
 group :development, :test do
-  #gem 'debugger'
+  gem 'debugger'
 end

@@ -27,9 +27,19 @@ class User < ActiveRecord::Base
   def day_of_study
     membership = currently_ill_membership
 
-    if membership && membership.symptoms_started_on
+    if membership && membership.enrolled_on && membership.symptoms_started_on
       Date.today - membership.symptoms_started_on + 1
     end
+  end
+
+  # find a survey that requires completion
+  def outstanding_survey_id
+    surveys_today = Survey.to_complete_on_day(day_of_study).map(&:id)
+    surveys_completed = survey_submissions
+        .where("DATE(survey_submissions.created_at) = ?", Date.today)
+        .map(&:survey_id)
+
+    (surveys_today - surveys_completed).first
   end
 
   private

@@ -6,9 +6,7 @@ class SurveySubmissionsController < ApplicationController
 
     if @survey_submission.save
       user = @survey_submission.user
-      surveys_today = Survey.to_complete_on_day(user.day_of_study).map(&:id)
-      surveys_completed = user.survey_submissions.where("DATE(survey_submissions.created_at) = ?", Date.today).map(&:survey_id)
-      outstanding_survey = (surveys_today - surveys_completed).first
+      outstanding_survey = user.outstanding_survey_id
 
       if outstanding_survey
         survey = Survey.find(outstanding_survey)
