@@ -8,7 +8,7 @@ class SurveySubmission < ActiveRecord::Base
 
   def update_membership
     record = SymptomsStartedOnSource.first
-    date = response_data[record.question_data_label]
+    date = response_data && response_data[record.question_data_label]
 
     if !date.blank?
       user.currently_ill_membership.update_column :symptoms_started_on, date
