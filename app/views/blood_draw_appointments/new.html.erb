@@ -7,7 +7,7 @@
     <div class="form-group">
       <%= f.label :date, class: 'col-sm-2 control-label' %>
       <div class="col-xs-9">
-        <%= f.text_field :date, class: 'datepicker', :'data-max-date' => "#{ Date.today + 2.months }T12:00", :'data-min-date' => "#{ Date.tomorrow }T12:00" %>
+        <%= f.text_field :date, class: 'datepicker', :'data-max-date' => "#{ Date.today + 2.months }T12:00", :'data-min-date' => "#{ Date.tomorrow }T12:00", :'data-disabled' => "[1, 7]" %>
       </div>
     </div>
   </fieldset>

@@ -6,7 +6,7 @@ class BloodDrawAppointment < ActiveRecord::Base
   validates :user, presence: true
   validates_presence_of :date, message: 'an appointment date is required'
   validates_uniqueness_of :user_id, message: 'a blood draw has already been scheduled'
-  validate :appointment_day_not_full, :within_accepted_date_range
+  validate :appointment_day_not_full, :within_accepted_date_range, :on_weekday
 
   delegate :participant_id, to: :user, prefix: false
 
@@ -27,6 +27,12 @@ class BloodDrawAppointment < ActiveRecord::Base
   def within_accepted_date_range
     if date && (date <= Date.today || date > (Date.today + 2.months))
       errors.add :date, 'the date may be as early as tomorrow and as late as two months from today'
+    end
+  end
+
+  def on_weekday
+    if date && (date.saturday? || date.sunday?)
+      errors.add :date, 'the date must be on a weekday'
     end
   end
 end
