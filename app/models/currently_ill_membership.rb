@@ -1,7 +1,7 @@
 class CurrentlyIllMembership < ActiveRecord::Base
   belongs_to :user
 
-  after_save :notify_of_flu_test_results
+  after_commit :notify_of_flu_test_results
 
   def notify_of_flu_test_results
     if tested_positive_on_changed? && !tested_positive_on.nil?
