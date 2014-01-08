@@ -25,9 +25,7 @@ gem 'devise'
 gem 'rails_admin'
 
 # email preview
-group :development do
-  gem 'mail_view', '~> 1.0.3'
-end
+gem 'mail_view', '~> 1.0.3'
 
 # pdf generation
 gem 'prawn'
