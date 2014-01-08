@@ -137,12 +137,31 @@ RailsAdmin.config do |config|
   config.model 'CurrentlyIllMembership' do
     navigation_label nav_label
 
-    participant_id_field
-    field :consented_on
-    field :enrolled_on
-    field :symptoms_started_on
-    field :tested_positive_on
-    field :tested_negative_on
+    list do
+      participant_id_field
+      field :consented_on
+      field :enrolled_on
+      field :symptoms_started_on
+      field :tested_positive_on
+      field :tested_negative_on
+    end
+
+    show do
+      participant_id_field
+      field :consented_on
+      field :enrolled_on
+      field :symptoms_started_on
+      field :tested_positive_on
+      field :tested_negative_on
+    end
+
+    edit do
+      field :consented_on
+      field :enrolled_on
+      field :symptoms_started_on
+      field :tested_positive_on
+      field :tested_negative_on
+    end
   end
 
   config.model 'PreviouslyIllMembership' do

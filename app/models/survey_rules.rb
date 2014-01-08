@@ -1,9 +1,10 @@
 require 'digest'
 
 class SurveyRules
-  def initialize(survey_id, user_id)
+  def initialize(survey_id, user_id, assignment_date)
     @survey_id = survey_id
     @user_id = user_id
+    @date = Date.parse(assignment_date || Date.today.to_s)
   end
 
   def validate_token?(token)
@@ -18,7 +19,15 @@ class SurveyRules
     User.find @user_id
   end
 
+  def assignment_date
+    @date
+  end
+
   def make_token
-    Digest::MD5.hexdigest(@survey_id.to_s + @user_id.to_s.strip.downcase)
+    Digest::MD5.hexdigest id
+  end
+
+  def id
+    "#{ @survey_id }+#{ @user_id.to_s.strip.downcase }+#{ @date.to_s :db }"
   end
 end

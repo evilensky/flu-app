@@ -1,6 +1,7 @@
 <%= form_for @survey, url: survey_submissions_path, method: :post, html: { class: 'form-horizontal', role: 'form' } do |f| %>
   <%= hidden_field_tag 'survey[survey_id]', @survey.id %>
   <%= hidden_field_tag 'survey[user_id]', @user.id %>
+  <%= hidden_field_tag 'survey[assignment_date]', @date.to_s(:db) %>
   <%= hidden_field_tag 'survey[token]', @survey_token %>
   <fieldset>
     <% @survey.questions.order(:data_label).each do |q| %>

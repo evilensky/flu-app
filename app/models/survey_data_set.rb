@@ -132,7 +132,7 @@ class SurveyDataSet < User
 
   (1..14).each do |day|
     define_method("qday_#{ day }") do
-      date = daily(day).created_at
+      date = daily(day).assignment_date
       date && date.to_date.to_s(:compact)
     end
     define_method("rday_#{ day }") do
@@ -220,6 +220,7 @@ class SurveyDataSet < User
     @baseline && @baseline[item]
   end
 
+  # return the Daily survey submitted on a particular day of the study
   def daily(day)
     data = nil
 
@@ -227,7 +228,7 @@ class SurveyDataSet < User
       survey_date = currently_ill_membership.symptoms_started_on + day - 1
       data = survey_submissions
           .includes(:survey)
-          .where("surveys.title = 'Daily' AND DATE(survey_submissions.created_at) = ?", survey_date)
+          .where("surveys.title = 'Daily' AND DATE(survey_submissions.assignment_date) = ?", survey_date)
           .references(:surveys)
           .first
     end

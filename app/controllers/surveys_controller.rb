@@ -4,11 +4,12 @@ class SurveysController < ApplicationController
   end
 
   def show
-    survey_rules = SurveyRules.new params[:id], params[:user_id]
+    survey_rules = SurveyRules.new params[:id], params[:user_id], params[:date]
 
     if survey_rules.validate_token? params[:survey_token]
       @survey = survey_rules.current_survey
       @user = survey_rules.current_user
+      @date = survey_rules.assignment_date
       @survey_token = params[:survey_token]
     else
       redirect_to errors_url,

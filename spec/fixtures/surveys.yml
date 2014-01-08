@@ -1,0 +1,11 @@
+baseline:
+  title: Baseline
+  days_to_administer: []
+
+daily:
+  title: Daily
+  days_to_administer: []
+
+day14:
+  title: Day 14
+  days_to_administer: [14]

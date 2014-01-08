@@ -6,7 +6,7 @@ class SurveySubmissionsController < ApplicationController
 
     if @survey_submission.save
       user = @survey_submission.user
-      outstanding_survey = user.outstanding_survey_id
+      outstanding_survey = user.outstanding_survey_id(survey_params[:assignment_date])
 
       if outstanding_survey
         survey = Survey.find(outstanding_survey)
@@ -15,7 +15,8 @@ class SurveySubmissionsController < ApplicationController
         else
           'Thank you for responding to the survey'
         end
-        redirect_to survey_url(survey, survey_token: SurveyRules.new(outstanding_survey, user.id).make_token, user_id: user.id)
+        token = SurveyRules.new(outstanding_survey, user.id, survey_params[:assignment_date]).make_token
+        redirect_to survey_url(survey, survey_token: token, user_id: user.id, date: survey_params[:assignment_date])
       else
         render :success
       end
@@ -25,14 +26,14 @@ class SurveySubmissionsController < ApplicationController
   private
 
   def validate_token
-    rules = SurveyRules.new(survey_params[:survey_id], survey_params[:user_id])
+    rules = SurveyRules.new(survey_params[:survey_id], survey_params[:user_id], survey_params[:assignment_date])
     unless rules.validate_token? params[:survey][:token]
       render text: 'Error!'
     end
   end
 
   def survey_params
-    params.require(:survey).permit(:survey_id, :user_id).tap do |whitelisted|
+    params.require(:survey).permit(:survey_id, :user_id, :assignment_date).tap do |whitelisted|
       whitelisted[:response_data] = params[:survey][:response_data]
     end
   end

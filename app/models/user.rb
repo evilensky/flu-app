@@ -24,19 +24,20 @@ class User < ActiveRecord::Base
     create attrs.merge(password: password, password_confirmation: password, participant_id: participant_id)
   end
 
-  def day_of_study
+  def day_of_study(date = nil)
     membership = currently_ill_membership
 
     if membership && membership.enrolled_on && membership.symptoms_started_on
-      Date.today - membership.symptoms_started_on + 1
+      (date || Date.today) - membership.symptoms_started_on + 1
     end
   end
 
-  # find a survey that requires completion
-  def outstanding_survey_id
-    surveys_today = Survey.to_complete_on_day(day_of_study).map(&:id)
+  # find a survey that requires completion on the given date
+  def outstanding_survey_id(assignment_date)
+    date = Date.parse(assignment_date)
+    surveys_today = Survey.to_complete_on_day(day_of_study(date)).map(&:id)
     surveys_completed = survey_submissions
-        .where("DATE(survey_submissions.created_at) = ?", Date.today)
+        .where("DATE(survey_submissions.assignment_date) = ?", assignment_date)
         .map(&:survey_id)
 
     (surveys_today - surveys_completed).first
