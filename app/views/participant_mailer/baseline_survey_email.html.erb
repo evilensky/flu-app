@@ -48,7 +48,7 @@
                       <table class="twelve columns">
                         <tr>
                           <td class="panel">
-                            <p>Thank you for your participation!  You are helping scientists to better understand and treat the flu. <%= link_to 'Take the Baseline Survey', survey_url(@survey, survey_token: SurveyRules.new(@survey.id, @user.id).make_token, user_id: @user.id) %></p>
+                            <p>Thank you for your participation!  You are helping scientists to better understand and treat the flu. <%= link_to 'Take the Baseline Survey', survey_url(@survey, survey_token: SurveyRules.new(@survey.id, @user.id, Date.today.to_s(:db)).make_token, user_id: @user.id) %></p>
                           </td>
                           <td class="expander"></td>
                         </tr>

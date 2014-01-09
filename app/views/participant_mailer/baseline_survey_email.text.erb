@@ -10,4 +10,4 @@ As a participant, you will:
 * If you test positive for the flu, you will receive a daily email for up to 14 days with a link to a checklist of your flu symptoms for that day.  Please try to complete it daily!
 * If you test negative for the flu, you will receive an email letting you know that you have completed your participation.
 
-Take the Baseline Survey here: <%= survey_url(Survey.first, survey_token: SurveyRules.new(Survey.first.id, @user.id).make_token, user_id: @user.id) %>
+Take the Baseline Survey here: <%= survey_url(Survey.first, survey_token: SurveyRules.new(Survey.first.id, @user.id, Date.today.to_s(:db)).make_token, user_id: @user.id) %>
