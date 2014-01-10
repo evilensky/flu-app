@@ -223,6 +223,25 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model 'SurveyCompletion' do
+    navigation_label nav_label
+
+    list do
+      field :participant_id do
+        label 'id'
+      end
+      Survey.all.each do |survey|
+        if survey.days_to_administer.length > 1
+          survey.days_to_administer.each do |day|
+            field "#{ survey.title }_day_#{ day }_completed?", :boolean
+          end
+        else
+          field "#{ survey.title }_completed?", :boolean
+        end
+      end
+    end
+  end
+
   def survey_data_set_list_fields
     field :participant_id do
       label 'id'
