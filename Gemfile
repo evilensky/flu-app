@@ -38,7 +38,6 @@ group :production do
 end
 
 group :development, :test do
-  gem 'debugger'
   gem 'rspec-rails', '~> 2.14'
   gem 'capybara', '~> 2.0.0'
 end

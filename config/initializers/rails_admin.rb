@@ -76,6 +76,12 @@ RailsAdmin.config do |config|
       field :type
       consent_fields
     end
+
+    edit do
+      group :default do
+        hide
+      end
+    end
   end
 
   config.model 'CurrentlyIllConsent' do
@@ -92,6 +98,12 @@ RailsAdmin.config do |config|
     show do
       consent_fields
     end
+
+    edit do
+      group :default do
+        hide
+      end
+    end
   end
 
   config.model 'PreviouslyIllConsent' do
@@ -107,6 +119,12 @@ RailsAdmin.config do |config|
 
     show do
       consent_fields
+    end
+
+    edit do
+      group :default do
+        hide
+      end
     end
   end
 

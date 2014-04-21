@@ -11,11 +11,11 @@ class BloodDrawAppointment < ActiveRecord::Base
   delegate :participant_id, to: :user, prefix: false
 
   def participant_full_name
-    user.consent.participant_full_name
+    user.consent.try(:participant_full_name)
   end
 
   def participant_date_of_birth
-    user.consent.date_of_birth
+    user.consent.try(:date_of_birth)
   end
 
   def appointment_day_not_full
