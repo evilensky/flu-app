@@ -94,7 +94,7 @@ NameVirtualHost *:443
   PassengerAppEnv production
   PassengerRuby /usr/local/rvm/wrappers/ruby-2.1.1/ruby
 
-  ServerName fortitude.northwestern.edu
+  ServerName fluomics.northwestern.edu
 
   SSLEngine On
   SSLCertificateFile /etc/pki/tls/certs/cbits-railsapps.nubic.northwestern.edu.crt
