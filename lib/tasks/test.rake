@@ -1,2 +1,5 @@
-# dummy task
-task "test:prepare"
+require "rake"
+
+task "test:prepare" do
+  Rake::Task["db:migrate"].invoke
+end
