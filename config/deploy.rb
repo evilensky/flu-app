@@ -2,7 +2,7 @@
 lock '3.2.1'
 
 set :application, 'flu-app'
-set :repo_url, "git@github.com:cbitstech/#{ fetch(:application) }.git"
+set :repo_url, "git@github.com:evilensky/#{ fetch(:application) }.git"
 set :rvm_type, :system
 set :rvm_ruby_version, '2.1.1'
 
@@ -85,7 +85,7 @@ NameVirtualHost *:80
 NameVirtualHost *:443
 
 <VirtualHost *:80>
-  ServerName flumonics.northwestern.edu
+  ServerName fluomics.northwestern.edu
   Redirect permanent / https://fluomics.northwestern.edu/
 </VirtualHost>
 

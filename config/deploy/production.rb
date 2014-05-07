@@ -15,7 +15,7 @@
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 
-server 'fluomics.northwestern.edu', user: 'deploy', roles: %w{web db}, primary: true
+server 'cbits-railsapps.nubic.northwestern.edu', user: 'deploy', roles: %w{web db}, primary: true
 
 
 # Custom SSH Options
