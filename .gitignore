@@ -16,6 +16,4 @@
 /tmp
 
 # Ignore deployment files.
-Capfile
-config/deploy.rb
 .DS_Store

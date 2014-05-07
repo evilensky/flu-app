@@ -15,10 +15,6 @@ gem 'coffee-rails', '~> 4.0.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
-# Use Capistrano for deployment
-gem 'capistrano', group: :development
-gem 'rvm-capistrano'
-
 # authentication
 gem 'devise'
 # admin
@@ -35,6 +31,13 @@ group :production do
   gem 'whenever', require: false
   # email exceptions
   gem 'exception_notification'
+end
+
+group :development do
+  gem 'capistrano', '~> 3.2.0', require: false
+  gem 'capistrano-rails', '~> 1.1', require: false
+  gem 'capistrano-rvm', '~> 0.1', require: false
+  gem 'capistrano-bundler', '~> 1.1.2'
 end
 
 group :development, :test do

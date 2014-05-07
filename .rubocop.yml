@@ -1,0 +1,34 @@
+AllCops:
+  Exclude:
+    - bin/**
+    - config/**
+    - db/**
+
+Documentation:
+  Exclude:
+    - spec/**
+
+DotPosition:
+  Enabled: false
+
+FinalNewline:
+  Enabled: false
+
+HandleExceptions:
+  Enabled: false
+
+IfUnlessModifier:
+  Enabled: false
+
+LineLength:
+  Exclude:
+    - spec/**
+
+MethodLength:
+  Max: 15
+
+StringLiterals:
+  EnforcedStyle: double_quotes
+
+WordArray:
+  Enabled: false
