@@ -47,4 +47,3 @@ server 'fluomics-staging.cbits.northwestern.edu', user: 'deploy', roles: %w{web 
 set :ssh_options, {
   forward_agent: true
 }
-
